@@ -1,0 +1,9 @@
+button {
+  box-shadow: none !important;
+}
+div img {
+  cursor: pointer;
+}
+div a {
+  color: white;
+}

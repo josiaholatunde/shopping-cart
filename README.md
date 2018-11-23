@@ -1,4 +1,5 @@
 # FashionStudio
+A shopping cart built with angular for carrying out shopping transactions
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.2.1.
 

@@ -1,0 +1,9 @@
+select[name=quantity] {
+  box-shadow: none;
+}
+button[type=submit]:hover{
+  box-shadow: none;
+}
+input[type=radio]{
+  cursor: pointer;
+}

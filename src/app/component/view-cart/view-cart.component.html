@@ -1,0 +1,27 @@
+<div class="container mt-4">
+  <div class="row">
+      <div *ngIf="totalPrice" style="margin-left:83%; margin-top:3%;"  >
+          <i class="fa fa-shopping-cart fa-lg" aria-hidden="true"></i>
+          <h5>Total Price: {{totalPrice | currency : 'USD'}}</h5>
+          <a href="#" class="btn btn-primary">Checkout</a>
+      </div>
+  </div>
+  <div class="row" style="margin-top:-10%" >
+      <div class="card col-md-3 mr-4 mt-3" *ngFor="let product of cartItems">
+          <div class="card-header">
+            {{product.name}}
+          </div>
+          <div class="card-body">
+            <div>
+                <img  height="250" width="200" src="assets/img/{{product.imgUrl}}">
+            </div>
+            <h5 class="mt-3">Description: {{product.description}}</h5>
+            <h5>Price: {{product.price | currency : 'USD'}} * {{product.quantity}}</h5>
+          </div>
+      </div>
+  </div>
+
+<div *ngIf="cartItems.length === 0" style="margin-top:17%;" >
+  <h4 class="text-center text-primary mt-4">Oops!!! No Item in Cart to display</h4>
+</div>
+</div>

@@ -1,4 +1,4 @@
-<div class="col-md-3 mb-3">
+<div class="col-md-4 mb-3">
   <div class="card" style="width: 19rem;">
     <div class="thumb-nail mt-3">
       <img class="card-img-top" height="70%" src="assets/img/{{product.imgUrl}}">
@@ -12,10 +12,24 @@
         <a  class="btn btn-primary btn-sm " [routerLink]="['/product',productCategory,product.id]">
           View Details
         </a>
-        <a  class="btn btn-danger btn-sm ml-3">
+        <a  class="btn btn-danger btn-sm ml-3" (click)=" showDialog()">
           Add to Cart
         </a>
       </div>
     </div>
   </div>
 </div>
+<p-dialog [header]="product.name" [(visible)]="display" [modal]="true" [responsive]="true" [width]="370" [minWidth]="200" [minY]="90"
+        [maximizable]="true" [baseZIndex]="10000">
+        <div>
+          <h6>Select the quantity of {{product.name}}</h6>
+          <span><select name="userQty" [(ngModel)]="userQty" >
+            <option *ngFor="let qty of productQty" [value]="qty" >{{qty}}</option>
+          </select>
+        </span>
+        </div>
+        <p-footer>
+            <button type="button" pButton icon="pi pi-check" (click)="addToCart()" label="Proceed"></button>
+            <button type="button" pButton icon="pi pi-close" (click)="display=false" label="Cancel" class="ui-button-secondary"></button>
+        </p-footer>
+</p-dialog>

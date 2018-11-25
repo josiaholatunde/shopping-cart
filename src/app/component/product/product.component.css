@@ -4,6 +4,6 @@ button {
 div img {
   cursor: pointer;
 }
-div a {
+div a,div a:hover {
   color: white;
 }

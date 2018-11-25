@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Category } from '../models/category';
 import { Product } from '../models/product';
+import { User } from '../models/User';
+import { EventEmitter } from 'events';
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +14,9 @@ export class ProductService {
   private sneakers: Product[];
   private bags: Product[];
   private shirts: Product[];
+  private cartItems:Product[];
   constructor() {
+    this.cartItems = [];
     this.categories = [
       Category.Gowns,
       Category.Laptops,
@@ -86,6 +90,14 @@ export class ProductService {
       let phone = this.phones.find(phone => phone.id === id);
       return phone;
     }
+  }
+  addToCart(item: Product ){
+      if (item) {
+        this.cartItems.push(item);
+      }
+  }
+  getCartItems(): Product[] {
+    return this.cartItems;
   }
 
 }

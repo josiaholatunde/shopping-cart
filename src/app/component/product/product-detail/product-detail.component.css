@@ -3,6 +3,7 @@ select[name=quantity] {
 }
 button[type=submit]:hover{
   box-shadow: none;
+  
 }
 input[type=radio]{
   cursor: pointer;

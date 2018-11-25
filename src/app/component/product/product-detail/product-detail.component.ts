@@ -14,8 +14,10 @@ export class ProductDetailComponent implements OnInit {
  isShippingFree: boolean = false;
  arrivalDate: Date;
  quantity: number[];
+ modeOfPayment:string;
   constructor(private route: ActivatedRoute, private productService: ProductService) {
     this.quantity = [];
+    this.modeOfPayment ="cash"
    }
 
   ngOnInit() {
@@ -33,6 +35,8 @@ export class ProductDetailComponent implements OnInit {
       }
     });
   }
+
+  writeReview(){}
 
 
 }

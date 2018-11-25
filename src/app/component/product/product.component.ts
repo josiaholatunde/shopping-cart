@@ -26,6 +26,8 @@ export class ProductComponent implements OnInit {
    }
 
   ngOnInit() {
+      console.log("Prod",this.product);
+
       this.productCategory = Category[this.product.category];
       for (let i = 0; i <= this.product.quantity; i++) {
         this.productQty[i] = i;

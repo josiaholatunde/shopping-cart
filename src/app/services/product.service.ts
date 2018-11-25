@@ -50,19 +50,19 @@ export class ProductService {
     ];
 
     this.bags = [
-      {id: 1,name: 'Mini Bag',quantity:7, description: '64GB Android 7.0', keyFeatures: ['Display: 6-Inch HD','CPU: 1.3 GHz Quad Core','Memory: 16GB ROM + 1GB RAM (Expandable via microSD)'],price: 72277,imgUrl:'bags/bag1.jpg',category: Category.Sneakers, dateSold: null },
-      {id: 2,name: 'Bucket Bag', quantity:7, description: '64GB Android 7.0', keyFeatures: ['Display: 6-Inch HD','CPU: 1.3 GHz Quad Core','Memory: 16GB ROM + 1GB RAM (Expandable via microSD)'],price: 77337,imgUrl:'bags/bag1.jpg',category: Category.Sneakers, dateSold: null },
-      {id: 3,name: 'Clutches', quantity:7, description: '64GB Android 7.0',keyFeatures: ['Display: 6-Inch HD','CPU: 1.3 GHz Quad Core','Memory: 16GB ROM + 1GB RAM (Expandable via microSD)'],price: 77117,imgUrl:'bags/bag1.jpg',category: Category.Sneakers, dateSold: null },
-      {id: 4,name: 'Back Packs', quantity:7, description: '64GB Android 7.0', keyFeatures: ['Display: 6-Inch HD','CPU: 1.3 GHz Quad Core','Memory: 16GB ROM + 1GB RAM (Expandable via microSD)'],price: 775437,imgUrl:'bags/bag1.jpg',category: Category.Sneakers, dateSold: null },
-      {id: 5,name: 'Larks', quantity:7, description: '64GB Android 7.0',price: 77700,keyFeatures: ['Display: 6-Inch HD','CPU: 1.3 GHz Quad Core','Memory: 16GB ROM + 1GB RAM (Expandable via microSD)'],imgUrl:'bags/bag1.jpg',category: Category.Sneakers, dateSold: null },
+      {id: 1,name: 'Mini Bag',quantity:7, description: '64GB Android 7.0', keyFeatures: ['Display: 6-Inch HD','CPU: 1.3 GHz Quad Core','Memory: 16GB ROM + 1GB RAM (Expandable via microSD)'],price: 72277,imgUrl:'bags/bag1.jpg',category: Category.Bags, dateSold: null },
+      {id: 2,name: 'Bucket Bag', quantity:7, description: '64GB Android 7.0', keyFeatures: ['Display: 6-Inch HD','CPU: 1.3 GHz Quad Core','Memory: 16GB ROM + 1GB RAM (Expandable via microSD)'],price: 77337,imgUrl:'bags/bag1.jpg',category: Category.Bags, dateSold: null },
+      {id: 3,name: 'Clutches', quantity:7, description: '64GB Android 7.0',keyFeatures: ['Display: 6-Inch HD','CPU: 1.3 GHz Quad Core','Memory: 16GB ROM + 1GB RAM (Expandable via microSD)'],price: 77117,imgUrl:'bags/bag1.jpg',category: Category.Bags, dateSold: null },
+      {id: 4,name: 'Back Packs', quantity:7, description: '64GB Android 7.0', keyFeatures: ['Display: 6-Inch HD','CPU: 1.3 GHz Quad Core','Memory: 16GB ROM + 1GB RAM (Expandable via microSD)'],price: 775437,imgUrl:'bags/bag1.jpg',category: Category.Bags, dateSold: null },
+      {id: 5,name: 'Larks', quantity:7, description: '64GB Android 7.0',price: 77700,keyFeatures: ['Display: 6-Inch HD','CPU: 1.3 GHz Quad Core','Memory: 16GB ROM + 1GB RAM (Expandable via microSD)'],imgUrl:'bags/bag1.jpg',category: Category.Bags, dateSold: null },
     ];
 
     this.shirts = [
-      {id: 1,name: 'Mini Shirt', quantity:7, description: '64GB Android 7.0',price: 72277,imgUrl:'shirts/FShirt2.jpg',category: Category.Sneakers, dateSold: null, keyFeatures: ['Display: 6-Inch HD','CPU: 1.3 GHz Quad Core','Memory: 16GB ROM + 1GB RAM (Expandable via microSD)']},
-      {id: 2,name: 'Bucket Bag',quantity:7, description: '64GB Android 7.0',price: 77337,imgUrl:'shirts/FShirt2.jpg',category: Category.Sneakers, dateSold: null, keyFeatures: ['Display: 6-Inch HD','CPU: 1.3 GHz Quad Core','Memory: 16GB ROM + 1GB RAM (Expandable via microSD)'] },
-      {id: 3,name: 'Sweat Shirt', quantity:7, description: '64GB Android 7.0',price: 77117,imgUrl:'shirts/FShirt2.jpg',category: Category.Sneakers, dateSold: null, keyFeatures: ['Display: 6-Inch HD','CPU: 1.3 GHz Quad Core','Memory: 16GB ROM + 1GB RAM (Expandable via microSD)'] },
-      {id: 4,name: 'Winter Shirt', quantity:7, description: '64GB Android 7.0',price: 775437,imgUrl:'shirts/FShirt2.jpg',category: Category.Sneakers, dateSold: null, keyFeatures: ['Display: 6-Inch HD','CPU: 1.3 GHz Quad Core','Memory: 16GB ROM + 1GB RAM (Expandable via microSD)'] },
-      {id: 5,name: 'Summer Shirt',quantity:7, description: '64GB Android 7.0',price: 77700,imgUrl:'shirts/FShirt2.jpg',category: Category.Sneakers, dateSold: null, keyFeatures: ['Display: 6-Inch HD','CPU: 1.3 GHz Quad Core','Memory: 16GB ROM + 1GB RAM (Expandable via microSD)'] },
+      {id: 1,name: 'Mini Shirt', quantity:7, description: '64GB Android 7.0',price: 72277,imgUrl:'shirts/FShirt2.jpg',category: Category.Shirts, dateSold: null, keyFeatures: ['Display: 6-Inch HD','CPU: 1.3 GHz Quad Core','Memory: 16GB ROM + 1GB RAM (Expandable via microSD)']},
+      {id: 2,name: 'Bucket Bag',quantity:7, description: '64GB Android 7.0',price: 77337,imgUrl:'shirts/FShirt2.jpg',category: Category.Shirts, dateSold: null, keyFeatures: ['Display: 6-Inch HD','CPU: 1.3 GHz Quad Core','Memory: 16GB ROM + 1GB RAM (Expandable via microSD)'] },
+      {id: 3,name: 'Sweat Shirt', quantity:7, description: '64GB Android 7.0',price: 77117,imgUrl:'shirts/FShirt2.jpg',category: Category.Shirts, dateSold: null, keyFeatures: ['Display: 6-Inch HD','CPU: 1.3 GHz Quad Core','Memory: 16GB ROM + 1GB RAM (Expandable via microSD)'] },
+      {id: 4,name: 'Winter Shirt', quantity:7, description: '64GB Android 7.0',price: 775437,imgUrl:'shirts/FShirt2.jpg',category: Category.Shirts, dateSold: null, keyFeatures: ['Display: 6-Inch HD','CPU: 1.3 GHz Quad Core','Memory: 16GB ROM + 1GB RAM (Expandable via microSD)'] },
+      {id: 5,name: 'Summer Shirt',quantity:7, description: '64GB Android 7.0',price: 77700,imgUrl:'shirts/FShirt2.jpg',category: Category.Shirts, dateSold: null, keyFeatures: ['Display: 6-Inch HD','CPU: 1.3 GHz Quad Core','Memory: 16GB ROM + 1GB RAM (Expandable via microSD)'] },
     ];
   }
 
@@ -89,6 +89,18 @@ export class ProductService {
     if (category === Category.Phones) {
       let phone = this.phones.find(phone => phone.id === id);
       return phone;
+    } else if (category === Category.Gowns) {
+      let gown = this.gowns.find(gown => gown.id === id);
+      return gown;
+    } else if (category === Category.Sneakers) {
+      let sneakers = this.sneakers.find(sneakers => sneakers.id === id);
+      return sneakers;
+    } else if (category === Category.Bags) {
+      let bags = this.bags.find(bags => bags.id === id);
+      return bags;
+    } else if (category === Category.Shirts) {
+      let shirts = this.shirts.find(shirts => shirts.id === id);
+      return shirts;
     }
   }
   addToCart(item: Product ){

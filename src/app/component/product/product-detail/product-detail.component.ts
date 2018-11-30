@@ -11,68 +11,65 @@ import { Product } from 'src/app/models/product';
 })
 export class ProductDetailComponent implements OnInit {
  selectedProduct: Product;
- isShippingFree: boolean = false;
+ isShippingFree = false;
  arrivalDate: Date;
  quantity: number[];
- modeOfPayment:string;
+ modeOfPayment: string;
+ reviewCount: number;
   constructor(private route: ActivatedRoute, private productService: ProductService) {
     this.quantity = [];
-    this.modeOfPayment ="cash"
+    this.modeOfPayment = 'cash';
+    this.reviewCount = 5;
    }
 
   ngOnInit() {
-    this.route.params.subscribe((params : Params) => {
-      if(params['name'] !== null) {
+    this.route.params.subscribe((params: Params) => {
+      if ( params['name'] !== null) {
 
         if (params['name'] === Category[Category.Phones]) {
-          let id = +params['id'];
-          this.selectedProduct = this.productService.getProductById(Category.Phones,id);
-          for( let i = 1; i <= this.selectedProduct.quantity; i++) {
+          const id = +params['id'];
+          this.selectedProduct = this.productService.getProductById(Category.Phones, id);
+          for ( let i = 1; i <= this.selectedProduct.quantity; i++) {
               this.quantity.push(i);
           }
-          console.log("productList",this.selectedProduct);
         } else if (params['name'] === Category[Category.Bags]) {
-          let id = +params['id'];
-          this.selectedProduct = this.productService.getProductById(Category.Bags,id);
-          for( let i = 1; i <= this.selectedProduct.quantity; i++) {
+          const id = +params['id'];
+          this.selectedProduct = this.productService.getProductById(Category.Bags, id);
+          for ( let i = 1; i <= this.selectedProduct.quantity; i++) {
               this.quantity.push(i);
           }
-          console.log("productList",this.selectedProduct);
         } else if (params['name'] === Category[Category.Gowns]) {
-          let id = +params['id'];
-          this.selectedProduct = this.productService.getProductById(Category.Gowns,id);
-          for( let i = 1; i <= this.selectedProduct.quantity; i++) {
+          const id = +params['id'];
+          this.selectedProduct = this.productService.getProductById(Category.Gowns, id);
+          for ( let i = 1; i <= this.selectedProduct.quantity; i++) {
               this.quantity.push(i);
           }
-          console.log("productList",this.selectedProduct);
         } else if (params['name'] === Category[Category.Shirts]) {
-          let id = +params['id'];
-          this.selectedProduct = this.productService.getProductById(Category.Shirts,id);
-          for( let i = 1; i <= this.selectedProduct.quantity; i++) {
+          const id = +params['id'];
+          this.selectedProduct = this.productService.getProductById(Category.Shirts, id);
+          for ( let i = 1; i <= this.selectedProduct.quantity; i++) {
               this.quantity.push(i);
           }
-          console.log("productList",this.selectedProduct);
         } else if (params['name'] === Category[Category.Sneakers]) {
 
-          let id = +params['id'];
-          this.selectedProduct = this.productService.getProductById(Category.Sneakers,id);
-          for( let i = 1; i <= this.selectedProduct.quantity; i++) {
+          const id = +params['id'];
+          this.selectedProduct = this.productService.getProductById(Category.Sneakers, id);
+          for ( let i = 1; i <= this.selectedProduct.quantity; i++) {
               this.quantity.push(i);
           }
-          console.log("productList",this.selectedProduct);
         } else if (params['name'] === Category[Category.Laptops]) {
-          let id = +params['id'];
-          this.selectedProduct = this.productService.getProductById(Category.Laptops,id);
-          for( let i = 1; i <= this.selectedProduct.quantity; i++) {
+          const id = +params['id'];
+          console.log('i vame');
+          this.selectedProduct = this.productService.getProductById(Category.Laptops, id);
+          for ( let i = 1; i <= this.selectedProduct.quantity; i++) {
               this.quantity.push(i);
           }
-          console.log("productList",this.selectedProduct);
         }
       }
     });
   }
 
-  writeReview(){}
+  writeReview() {}
 
 
 }

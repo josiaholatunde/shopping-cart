@@ -1,20 +1,25 @@
-<div class="col-md-4 mb-3">
-  <div class="card" style="width: 19rem;">
+<div class="col-md-3 mb-3">
+  <div class="card" style="width: 14rem;">
     <div class="thumb-nail mt-3">
-      <img class="card-img-top" height="70%" src="assets/img/{{product.imgUrl}}">
+      <img class="card-img-top" height="160px" src="assets/img/{{product.imgUrl}}">
     </div>
     <div class="card-body">
       <div class="card-text text-center">
-        <h3>{{product.name}}</h3>
+        <h4>{{product.name}}</h4>
         <p>{{product.description}}</p>
         <h5>{{product.price | currency : 'USD'}}</h5>
-        <h5>Available Qty: {{product.quantity}}</h5>
-        <a  class="btn btn-primary btn-sm " [routerLink]="['/product',productCategory,product.id]">
-          View Details
-        </a>
-        <a  class="btn btn-danger btn-sm ml-3" (click)=" showDialog()">
-          Add to Cart
-        </a>
+        <h6>Available Qty: {{product.quantity}}</h6>
+          <span>
+              <a  class="btn btn-primary btn-sm" [routerLink]="['/product',productCategory,product.id]">
+                Details
+              </a>
+
+
+              <a  class="btn btn-danger btn-sm ml-3" (click)=" showDialog()">
+                <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+               Cart
+              </a>
+          </span>
       </div>
     </div>
   </div>

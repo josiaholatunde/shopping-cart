@@ -1,18 +1,19 @@
 <div class="container">
-  <div class="row text-center mt-5">
+  <div class="row text-center mt-3">
     <div class="col-md-5">
-      <h2>Product Details</h2>
+      <h4>Product Details</h4>
       </div>
   </div>
   <div class="row mt-4">
     <div class="col-md-5">
       <img class="card-img-top" height="90%" src="assets/img/{{selectedProduct.imgUrl}}">
     </div>
-    <div class="col-md-7">
+    <div class="col-md-7" style="margin-top:-1%">
       <h3> {{selectedProduct.name}}</h3>
       <h5>{{selectedProduct.description}}</h5>
       <h5 class="text-primary">{{selectedProduct.price | currency : 'USD'}}</h5>
       <span><a (click)="writeReview()">Write a Review</a></span>
+      <span><i class="fa fa-star-o fa-md"></i></span>
       <div *ngIf="isShippingFree; else notFreeShipping">
           <h5>Free Shipping</h5>
       </div>
@@ -36,8 +37,11 @@
         </div>
       </div>
 
-      <button type="submit" class="btn btn-danger">Add to Cart</button>
-      <button type="submit" class="btn btn-success ml-3">BUY NOW</button>
+      <button type="submit" class="btn btn-danger btn-sm">
+          <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+        Add to Cart
+      </button>
+      <button type="submit" class="btn btn-success btn-sm ml-3">BUY NOW</button>
     </div>
   </div>
 </div>

@@ -6,4 +6,5 @@ div img {
 }
 div a,div a:hover {
   color: white;
+  font-size: 14px !important;
 }

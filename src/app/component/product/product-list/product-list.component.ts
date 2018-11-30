@@ -18,7 +18,6 @@ export class ProductListComponent implements OnInit {
       if(params['name'] !== null) {
         if (params['name'] === Category[Category.Phones]) {
           this.productList = this.productService.getProducts(Category.Phones);
-          console.log("productList",this.productList);
         } else if (params['name'] === Category[Category.Gowns]) {
           this.productList = this.productService.getProducts(Category.Gowns);
 
@@ -33,6 +32,9 @@ export class ProductListComponent implements OnInit {
         else if (params['name'] === Category[Category.Shirts]) {
           this.productList = this.productService.getProducts(Category.Shirts);
 
+        } else if (params['name'] === Category[Category.Laptops]) {
+
+          this.productList = this.productService.getProducts(Category.Laptops);
         }
       }
     })

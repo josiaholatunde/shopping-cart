@@ -14,8 +14,8 @@ import { Router } from '@angular/router';
 export class ProductComponent implements OnInit {
 
   @Input() product: Product;
-  productCategory: string
-  display: boolean = false;
+  productCategory: string;
+  display = false;
   productQty: number[];
   userQty: number;
   counter: number;
@@ -26,8 +26,6 @@ export class ProductComponent implements OnInit {
    }
 
   ngOnInit() {
-      console.log("Prod",this.product);
-
       this.productCategory = Category[this.product.category];
       for (let i = 0; i <= this.product.quantity; i++) {
         this.productQty[i] = i;
@@ -35,7 +33,7 @@ export class ProductComponent implements OnInit {
       this.userQty = this.product.quantity;
   }
   addToCart() {
-    let product = this.product;
+    const product = this.product;
     product.quantity = this.userQty;
     this.productService.addToCart(product);
     this.router.navigateByUrl('/product/cart');

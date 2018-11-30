@@ -14,7 +14,8 @@ export class ProductService {
   private sneakers: Product[];
   private bags: Product[];
   private shirts: Product[];
-  private cartItems:Product[];
+  private laptops: Product[];
+  private cartItems: Product[];
   constructor() {
     this.cartItems = [];
     this.categories = [
@@ -27,6 +28,13 @@ export class ProductService {
       Category.Bags,
 
     ];
+    this.laptops = [
+      {id: 1,name: 'Mac Book Pro',keyFeatures: ['Display: 6-Inch HD','CPU: 1.3 GHz Quad Core','Memory: 16GB ROM + 1GB RAM (Expandable via microSD)'], quantity:7, description: '64GB Android 7.0',price: 72277,imgUrl:'laptops/laptop_3.jpg',category: Category.Laptops, dateSold: null },
+      {id: 2,name: 'Mac Book Air',quantity:5,keyFeatures: ['Display: 6-Inch HD','CPU: 1.3 GHz Quad Core','Memory: 16GB ROM + 1GB RAM (Expandable via microSD)'], description: '64GB Android 7.0',price: 77337,imgUrl:'laptops/laptop_3.jpg',category: Category.Laptops, dateSold: null },
+      {id: 3,name: 'Mac Book Pro', quantity:3, keyFeatures: ['Display: 6-Inch HD','CPU: 1.3 GHz Quad Core','Memory: 16GB ROM + 1GB RAM (Expandable via microSD)'], description: '64GB Android 7.0',price: 77117,imgUrl:'laptops/laptop_3.jpg',category: Category.Laptops, dateSold: null },
+      {id: 4,name: 'Mac Book Pro', quantity:8, keyFeatures: ['Display: 6-Inch HD','CPU: 1.3 GHz Quad Core','Memory: 16GB ROM + 1GB RAM (Expandable via microSD)'], description: '64GB Android 7.0',price: 775437,imgUrl:'laptops/laptop_3.jpg',category: Category.Laptops, dateSold: null },
+      {id: 5,name: 'Mac Book Pro', quantity:3, keyFeatures: ['Display: 6-Inch HD','CPU: 1.3 GHz Quad Core','Memory: 16GB ROM + 1GB RAM (Expandable via microSD)'], description: '64GB Android 7.0',price: 77700,imgUrl:'laptops/laptop_3.jpg',category: Category.Laptops, dateSold: null },
+    ];
     this.phones = [
       {id: 1,name: 'IPhone X',keyFeatures: ['Display: 6-Inch HD','CPU: 1.3 GHz Quad Core','Memory: 16GB ROM + 1GB RAM (Expandable via microSD)'], quantity:7, description: '64GB Android 7.0',price: 72277,imgUrl:'phones/phone1.jpg',category: Category.Phones, dateSold: null },
       {id: 2,name: 'Infinix Hot6',quantity:5,keyFeatures: ['Display: 6-Inch HD','CPU: 1.3 GHz Quad Core','Memory: 16GB ROM + 1GB RAM (Expandable via microSD)'], description: '64GB Android 7.0',price: 77337,imgUrl:'phones/phone1.jpg',category: Category.Phones, dateSold: null },
@@ -35,11 +43,11 @@ export class ProductService {
       {id: 5,name: 'IPhone 7s', quantity:3, keyFeatures: ['Display: 6-Inch HD','CPU: 1.3 GHz Quad Core','Memory: 16GB ROM + 1GB RAM (Expandable via microSD)'], description: '64GB Android 7.0',price: 77700,imgUrl:'phones/phone1.jpg',category: Category.Phones, dateSold: null },
     ];
     this.gowns = [
-      {id: 1,name: 'Wedding Gown', keyFeatures: ['Display: 6-Inch HD','CPU: 1.3 GHz Quad Core','Memory: 16GB ROM + 1GB RAM (Expandable via microSD)'], quantity:9, description: '64GB Android 7.0',price: 72277,imgUrl:'gowns/wedding_dress1.jpg',category: Category.Gowns, dateSold: null },
-      {id: 2,name: 'Casual Gowns', quantity:10,keyFeatures: ['Display: 6-Inch HD','CPU: 1.3 GHz Quad Core','Memory: 16GB ROM + 1GB RAM (Expandable via microSD)'], description: '64GB Android 7.0',price: 77337,imgUrl:'gowns/wedding_dress1.jpg',category: Category.Gowns, dateSold: null },
-      {id: 3,name: 'Dinner Gown', quantity:11,keyFeatures: ['Display: 6-Inch HD','CPU: 1.3 GHz Quad Core','Memory: 16GB ROM + 1GB RAM (Expandable via microSD)'], description: '64GB Android 7.0',price: 77117,imgUrl:'gowns/wedding_dress1.jpg',category: Category.Gowns, dateSold: null },
-      {id: 3,name: 'Redd Carpet Gown', quantity:7, keyFeatures: ['Display: 6-Inch HD','CPU: 1.3 GHz Quad Core','Memory: 16GB ROM + 1GB RAM (Expandable via microSD)'], description: '64GB Android 7.0',price: 775437,imgUrl:'gowns/wedding_dress1.jpg',category: Category.Gowns, dateSold: null },
-      {id: 4,name: 'Gown Tag', quantity:7,keyFeatures: ['Display: 6-Inch HD','CPU: 1.3 GHz Quad Core','Memory: 16GB ROM + 1GB RAM (Expandable via microSD)'], description: '64GB Android 7.0',price: 77700,imgUrl:'gowns/wedding_dress1.jpg',category: Category.Gowns, dateSold: null },
+      {id: 1,name: 'Wedding Gown', keyFeatures: ['Display: 6-Inch HD','CPU: 1.3 GHz Quad Core','Memory: 16GB ROM + 1GB RAM (Expandable via microSD)'], quantity:9, description: '64GB Android 7.0',price: 72277,imgUrl:'gowns/wedding_dress5.jpg',category: Category.Gowns, dateSold: null },
+      {id: 2,name: 'Casual Gowns', quantity:10,keyFeatures: ['Display: 6-Inch HD','CPU: 1.3 GHz Quad Core','Memory: 16GB ROM + 1GB RAM (Expandable via microSD)'], description: '64GB Android 7.0',price: 77337,imgUrl:'gowns/wedding_dress5.jpg',category: Category.Gowns, dateSold: null },
+      {id: 3,name: 'Dinner Gown', quantity:11,keyFeatures: ['Display: 6-Inch HD','CPU: 1.3 GHz Quad Core','Memory: 16GB ROM + 1GB RAM (Expandable via microSD)'], description: '64GB Android 7.0',price: 77117,imgUrl:'gowns/wedding_dress5.jpg',category: Category.Gowns, dateSold: null },
+      {id: 3,name: 'Red Gown', quantity:7, keyFeatures: ['Display: 6-Inch HD','CPU: 1.3 GHz Quad Core','Memory: 16GB ROM + 1GB RAM (Expandable via microSD)'], description: '64GB Android 7.0',price: 775437,imgUrl:'gowns/wedding_dress5.jpg',category: Category.Gowns, dateSold: null },
+      {id: 4,name: 'Gown Tag', quantity:7,keyFeatures: ['Display: 6-Inch HD','CPU: 1.3 GHz Quad Core','Memory: 16GB ROM + 1GB RAM (Expandable via microSD)'], description: '64GB Android 7.0',price: 77700,imgUrl:'gowns/wedding_dress5.jpg',category: Category.Gowns, dateSold: null },
     ];
     this.sneakers = [
       {id: 1,name: 'Puma', quantity:10,keyFeatures: ['Display: 6-Inch HD','CPU: 1.3 GHz Quad Core','Memory: 16GB ROM + 1GB RAM (Expandable via microSD)'], description: '64GB Android 7.0',price: 72277,imgUrl:'sneakers/Sneakers7.jpg',category: Category.Sneakers, dateSold: null },
@@ -72,34 +80,36 @@ export class ProductService {
   getProducts(category: Category): Product[] {
     if (category === Category.Phones) {
       return this.phones;
-    }
-    else if (category === Category.Gowns) {
+    } else if (category === Category.Gowns) {
       return this.gowns;
     } else if (category === Category.Sneakers) {
       return this.sneakers;
-    }
-    else if (category === Category.Bags) {
+    } else if (category === Category.Bags) {
       return this.bags;
-    }
-    else if (category === Category.Shirts) {
+    } else if (category === Category.Shirts) {
       return this.shirts;
+    } else if (category === Category.Laptops) {
+      return this.laptops;
     }
   }
-  getProductById(category: Category,id: number): Product {
+  getProductById(category: Category, id: number): Product {
     if (category === Category.Phones) {
-      let phone = this.phones.find(phone => phone.id === id);
+      const phone = this.phones.find( ph => ph.id === id);
       return phone;
     } else if (category === Category.Gowns) {
-      let gown = this.gowns.find(gown => gown.id === id);
+      const gown = this.gowns.find( gow => gow.id === id);
       return gown;
     } else if (category === Category.Sneakers) {
-      let sneakers = this.sneakers.find(sneakers => sneakers.id === id);
+      const sneakers = this.sneakers.find(sneaker => sneaker.id === id);
       return sneakers;
     } else if (category === Category.Bags) {
-      let bags = this.bags.find(bags => bags.id === id);
+      const bags = this.bags.find(bag => bag.id === id);
       return bags;
     } else if (category === Category.Shirts) {
-      let shirts = this.shirts.find(shirts => shirts.id === id);
+      const shirts = this.shirts.find(shirt => shirt.id === id);
+      return shirts;
+    } else if (category === Category.Laptops) {
+      const shirts = this.laptops.find(laptop => laptop.id === id);
       return shirts;
     }
   }

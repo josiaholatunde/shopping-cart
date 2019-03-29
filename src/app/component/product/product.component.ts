@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-product',
   templateUrl: './product.component.html',
-  styleUrls: ['./product.component.css']
+  styleUrls: ['./product.component.scss']
 })
 export class ProductComponent implements OnInit {
 
@@ -26,15 +26,16 @@ export class ProductComponent implements OnInit {
    }
 
   ngOnInit() {
-      this.productCategory = Category[this.product.category];
-      for (let i = 0; i <= this.product.quantity; i++) {
+      for (let i = 1; i <= this.product.quantityAvailable; i++) {
         this.productQty[i] = i;
       }
-      this.userQty = this.product.quantity;
+      this.userQty = this.product.quantityAvailable;
+      // get productNameWidth
+
   }
   addToCart() {
     const product = this.product;
-    product.quantity = this.userQty;
+    product.quantityAvailable = this.userQty;
     this.productService.addToCart(product);
     this.router.navigateByUrl('/product/cart');
 

@@ -2,6 +2,9 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import {ButtonModule} from 'primeng/button';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HttpClientModule } from '@angular/common/http';
+
+
 import { FormsModule } from '@angular/forms';
 import {DialogModule} from 'primeng/dialog';
 import { AppComponent } from './app.component';
@@ -14,6 +17,10 @@ import { NotFoundComponent } from './component/not-found/not-found.component';
 import { ComponentComponent } from './component/component.component';
 import { ProductDetailComponent } from './component/product/product-detail/product-detail.component';
 import { ViewCartComponent } from './component/view-cart/view-cart.component';
+import { BrandsService } from './services/brand.service';
+import { ProductService } from './services/product.service';
+import { CategoryService } from './services/category.service';
+import { FooterComponent } from './component/footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +32,8 @@ import { ViewCartComponent } from './component/view-cart/view-cart.component';
     NotFoundComponent,
     ComponentComponent,
     ProductDetailComponent,
-    ViewCartComponent
+    ViewCartComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
@@ -33,11 +41,15 @@ import { ViewCartComponent } from './component/view-cart/view-cart.component';
     FormsModule,
     DialogModule,
     ButtonModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    HttpClientModule
 
 
   ],
-  providers: [],
+  providers: [
+    BrandsService,
+    CategoryService,
+    ProductService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

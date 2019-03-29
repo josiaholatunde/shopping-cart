@@ -3,11 +3,14 @@ import { Category } from './category';
 export class Product {
   id: number;
   name: string;
+  code: string;
   description: string;
   price: number;
   imgUrl: string;
-  category: Category;
+  categoryName: string;
+  merchantName: string;
+  pickUpAvailable: boolean;
   keyFeatures: string[];
-  quantity: number;
+  quantityAvailable: number;
   dateSold: Date;
 }

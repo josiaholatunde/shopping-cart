@@ -15,7 +15,7 @@ export class ViewCartComponent implements OnInit {
 
   ngOnInit() {
     this.cartItems = this.productService.getCartItems();
-    this.totalPrice = this.cartItems.reduce((accumulator,item) => accumulator + (item.price * item.quantity), 0);
+    this.totalPrice = this.cartItems.reduce((accumulator,item) => accumulator + (item.price * item.quantityAvailable), 0);
   }
 
 }

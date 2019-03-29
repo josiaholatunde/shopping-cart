@@ -1,0 +1,111 @@
+.heading {
+  display: flex;
+  width: 100%;
+  h3 {
+    font-size: 2.2rem;
+    padding: 1.5rem 1.5rem 0 1.5rem;
+  }
+}
+.main-container {
+  display: flex;
+  width: 100%;
+  flex: 1;
+  background: lightgrey;
+}
+
+.side-nav {
+  flex: 0 0 15%;
+  padding: 1.5rem;
+
+}
+.go-btn {
+  background: transparent;
+  width: 3rem;
+  border: 1px solid blue;
+  cursor: pointer;
+  &:hover {
+    background: blue;
+    color: white;
+  }
+
+}
+.card-container {
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem;
+}
+.flex-card {
+  display: flex;
+  flex-wrap: wrap;
+  justify-items: center;
+  & > *:not(:last-child) {
+    margin-right: 2rem;
+  }
+}
+.browse-price {
+  margin-top: .4rem;
+}
+.browse-price .heading {
+  // padding: .3rem;
+  font-weight: bold;
+
+}
+.radioo {
+  height: .8rem;
+  width: .8rem;
+  border-radius: 50%;
+  background: white;
+  margin-right: .8rem;
+  cursor: pointer;
+
+}
+.divActive {
+    background: black;
+}
+.flex-radio {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+.custom-price {
+  display: flex;
+  justify-content: space-between;
+
+}
+.minInput {
+  width: 27%;
+  height: 1.8rem;
+  margin-right: .5rem;
+  border: 1px solid black;
+}
+.search-brand {
+  display: flex;
+  flex: 1;
+  .brand {
+    border: 1px solid black;
+    padding: .3rem;
+    width: 100%;
+    &:focus {
+      outline: none;
+      border: 1px solid black;
+      box-shadow: 0 0 1px grey;
+    }
+  }
+}
+
+.checkbox-brand {
+  margin-top: .7rem;
+}
+
+.message {
+  margin-top: -30%;
+  align-self: center;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  flex: 1;
+}
+.brandName {
+  cursor: pointer;
+}

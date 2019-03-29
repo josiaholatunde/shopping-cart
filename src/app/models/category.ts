@@ -1,11 +1,7 @@
-export enum Category {
-  Gowns,
-  Laptops,
-  Shirts,
-  Phones,
-  Sneakers,
-  Bags
 
+export interface Category {
+  id: number;
+  name: string;
 }
 
 

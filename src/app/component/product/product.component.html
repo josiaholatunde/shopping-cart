@@ -1,31 +1,35 @@
-<div class="col-md-3 mb-3">
-  <div class="card" style="width: 14rem;">
+<div class="card-con" *ngIf="product">
+  <div class="card" style="width: 14rem;height: 26.7rem;">
+    <div class="like-icon">
+      <div class="con  text-right">
+          <i class="fa fa-heart"></i>
+      </div>
+    </div>
     <div class="thumb-nail mt-3">
-      <img class="card-img-top" height="160px" src="assets/img/{{product.imgUrl}}">
+      <img class="card-img-top" height="160px" src="../../../assets/img/phones/phone1.jpg">
     </div>
     <div class="card-body">
-      <div class="card-text text-center">
-        <h4>{{product.name}}</h4>
-        <p>{{product.description}}</p>
+      <div class="card-text text-center parent">
+        <h5 class="prod-name ellipsis" id="prod-name1">{{product.name}}</h5>
         <h5>{{product.price | currency : 'USD'}}</h5>
-        <h6>Available Qty: {{product.quantity}}</h6>
-          <span>
-              <a  class="btn btn-primary btn-sm" [routerLink]="['/product',productCategory,product.id]">
+        <h6>Available Qty: {{product.quantityAvailable || 0}}</h6>
+        <div class="small">Sold by Cc: {{ product.merchantName }}</div>
+        <h6 *ngIf="product.pickUpAvailable">Pickup Available </h6>
+          <div class="btn-con">
+              <a  class="btn btn-primary btn-sm" [routerLink]="['/products',product.categoryName,product.code]">
                 Details
               </a>
-
-
               <a  class="btn btn-danger btn-sm ml-3" (click)=" showDialog()">
                 <i class="fa fa-shopping-cart" aria-hidden="true"></i>
                Cart
               </a>
-          </span>
+          </div>
       </div>
     </div>
   </div>
 </div>
 <p-dialog [header]="product.name" [(visible)]="display" [modal]="true" [responsive]="true" [width]="370" [minWidth]="200" [minY]="90"
-        [maximizable]="true" [baseZIndex]="10000">
+        [maximizable]="true" [baseZIndex]="20000">
         <div>
           <h6>Select the quantity of {{product.name}}</h6>
           <span><select name="userQty" [(ngModel)]="userQty" >

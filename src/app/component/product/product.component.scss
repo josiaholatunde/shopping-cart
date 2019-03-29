@@ -1,0 +1,61 @@
+@import "../../../../node_modules/primeng/resources/primeng.min.css";
+@import "../../../../node_modules/font-awesome/css/font-awesome.min.css";
+@import "../../../../node_modules/primeng/resources/themes/darkness/theme.css";
+
+button {
+  box-shadow: none !important;
+}
+div img {
+  cursor: pointer;
+}
+div a,div a:hover {
+  color: white;
+  font-size: 14px !important;
+}
+.card-con{
+  padding-top: 1.3rem !important;
+}
+.btn-con {
+  margin-bottom: 1.2rem !important;
+}
+
+.like-icon {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+
+  .con {
+    height: 2rem;
+    width: 2rem;
+    border-radius: 50%;
+    background: lightgrey;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+  }
+}
+.card {
+  box-shadow: 1px 1px 3px grey, -1px -1px 3px grey;
+
+}
+.ellipsis {
+  display: block;
+  display: -webkit-box;
+  max-width: 100%;
+  height: 3.1rem;
+  line-height: 1.5rem;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.card-text .small {
+  font-size: .9rem;
+
+}
+.btn-con {
+  height: 2rem;
+  margin-top: .6rem;
+}

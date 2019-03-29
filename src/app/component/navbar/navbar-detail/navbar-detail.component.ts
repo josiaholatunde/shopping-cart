@@ -4,19 +4,14 @@ import { Category } from 'src/app/models/category';
 @Component({
   selector: 'app-navbar-detail',
   templateUrl: './navbar-detail.component.html',
-  styleUrls: ['./navbar-detail.component.css']
+  styleUrls: ['./navbar-detail.component.scss']
 })
 export class NavbarDetailComponent implements OnInit {
 
-  @Input() categories;
+  @Input() categories: Category[];
   constructor() { }
 
   ngOnInit() {
-    for(let i = 0; i < this.categories.length; i++) {
-      this.categories[i] = Category[i];
-      console.log(this.categories[i]);
-    }
-
   }
 
 }

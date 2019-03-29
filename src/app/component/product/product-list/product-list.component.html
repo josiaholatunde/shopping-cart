@@ -1,7 +1,54 @@
-<div class="container">
-  <div class="row mt-3">
-    <div *ngFor="let product of productList" >
-      <app-product  [product]="product"></app-product>
+<div class="heading">
+  <h3> {{productType}} </h3>
+</div>
+<div class="main-container">
+  <div class="side-nav">
+    <div class="browse-price">
+      <div class="heading">Browse Price</div>
+      <div class="flex-radio">
+         Under 2000
+      </div>
+      <div class="flex-radio">
+         2000 -5000
+      </div>
+      <div class="flex-radio">
+         5000 - 1000
+      </div>
+      <div class="flex-radio">
+         10000-20000
+      </div>
+    </div>
+<div class="browse-price">
+    <div class="heading">Custom Price Range</div>
+</div>
+    <div class="custom-price">
+      <input type="text" class="minInput" placeholder="Min">
+      <input type="text" class="minInput" placeholder="Max">
+      <input type="submit" class="go-btn" value="Go">
+    </div>
+    <div class="browse-price">
+      <div class="heading">Brand</div>
+    </div>
+    <div class="search-brand">
+      <input type="search" name="brand" placeholder="Search Brand" class="brand">
+    </div>
+    <div class="checkbox-brand" *ngFor="let b of brands">
+      <input type="checkbox" id="brandName {{b.brandName}}" value="{{ b.brandName }}">
+      <label for="brandName {{b.brandName}}" class="brandName">
+        {{ b.brandName }}
+      </label>
+    </div>
+  </div>
+  <div class="card-container" *ngIf="productList">
+    <div class="message" *ngIf="productList.length === 0">
+      <h1>Oops! There are currently no products to display</h1>
+    </div>
+    <div class="flex-card">
+      <div *ngFor="let product of productList" class="" >
+        <app-product  [product]="product"></app-product>
+      </div>
     </div>
   </div>
 </div>
+
+

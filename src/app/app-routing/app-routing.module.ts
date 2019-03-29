@@ -8,9 +8,9 @@ import { ViewCartComponent } from '../component/view-cart/view-cart.component';
 
 
 const routes: Routes = [
-  {path: 'product/cart', component: ViewCartComponent },
-  {path: 'product/:name', component: ProductListComponent },
-  {path: 'product/:name/:id', component: ProductDetailComponent },
+  {path: 'products/cart', component: ViewCartComponent },
+  {path: 'products', component: ProductListComponent },
+  {path: 'products/:name/:id', component: ProductDetailComponent },
   {path: '', redirectTo: 'product', pathMatch: 'full' },
   {path: '**', component: NotFoundComponent },
 

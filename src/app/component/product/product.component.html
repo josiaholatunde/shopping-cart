@@ -10,7 +10,7 @@
     </div>
     <div class="card-body">
       <div class="card-text text-center parent">
-        <h5 class="prod-name ellipsis" id="prod-name1">{{product.name}}</h5>
+        <h5 class="prod-name ellipsis" id="prod-name1" title="{{product.name}}">{{product.name}}</h5>
         <h5>{{product.price | currency : 'USD'}}</h5>
         <h6>Available Qty: {{product.quantityAvailable || 0}}</h6>
         <div class="small">Sold by Cc: {{ product.merchantName }}</div>

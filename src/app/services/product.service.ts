@@ -11,14 +11,22 @@ import { Observable } from 'rxjs';
 export class ProductService {
 
   baseUrl = `${environment.apiUrl}/products`;
+  cartItems: Product[];
   constructor(private http: HttpClient) {
+    this.cartItems = [];
   }
 
 
-  getProducts(categoryId: number): Observable<Product[]> {
+  getProducts(categoryId: number, brandCodes?: string, price?: string): Observable<Product[]> {
     let params = new HttpParams();
     if (categoryId) {
       params = params.append('categoryId', categoryId.toString());
+    }
+    if (price) {
+      params = params.append('price', price);
+    }
+    if (brandCodes) {
+      params = params.append('brandIds', brandCodes);
     }
     return this.http.get<Product[]>(this.baseUrl, { observe: 'body', params}).pipe();
   }
@@ -26,10 +34,17 @@ export class ProductService {
     return this.http.get<Product>(`${this.baseUrl}/${productCode}`).pipe();
   }
   addToCart(item: Product ) {
-    return this.http.get<Product>(this.baseUrl).pipe();
+    this.cartItems.push(item);
+  }
+  cartItemExists(name: string) {
+    const cartitem = this.cartItems.find(item => item.name === name);
+    return !!cartitem;
   }
   getCartItems(): Product[] {
-    return null;
+    return this.cartItems;
+  }
+  createProduct(productToCreate: any): Observable<Product> {
+    return this.http.post<Product>(this.baseUrl, productToCreate).pipe();
   }
 
 }

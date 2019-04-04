@@ -1,3 +1,4 @@
+import { MerchantService } from './services/merchant.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import {ButtonModule} from 'primeng/button';
@@ -5,7 +6,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 
 
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ModalModule } from 'ngx-bootstrap/modal';
 import {DialogModule} from 'primeng/dialog';
 import { AppComponent } from './app.component';
 import { ProductComponent } from './component/product/product.component';
@@ -21,6 +23,12 @@ import { BrandsService } from './services/brand.service';
 import { ProductService } from './services/product.service';
 import { CategoryService } from './services/category.service';
 import { FooterComponent } from './component/footer/footer.component';
+import { AlertifyService } from './services/alertify.service';
+import { CreateBrandFormComponent } from './component/brands/create-brand-form/create-brand-form.component';
+import { CreateMerchantFormComponent } from './component/brands/create-merchant-form/create-merchant-form.component';
+import { CreateProductFormComponent } from './component/brands/create-product-form/create-product-form.component';
+import { CreateCategoryFormComponent } from './component/brands/create-category-form/create-category-form.component';
+import { CreateStoreFormComponent } from './component/brands/create-store-form/create-store-form.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +41,12 @@ import { FooterComponent } from './component/footer/footer.component';
     ComponentComponent,
     ProductDetailComponent,
     ViewCartComponent,
-    FooterComponent
+    FooterComponent,
+    CreateBrandFormComponent,
+    CreateMerchantFormComponent,
+    CreateProductFormComponent,
+    CreateCategoryFormComponent,
+    CreateStoreFormComponent
   ],
   imports: [
     BrowserModule,
@@ -42,14 +55,19 @@ import { FooterComponent } from './component/footer/footer.component';
     DialogModule,
     ButtonModule,
     BrowserAnimationsModule,
-    HttpClientModule
+    ReactiveFormsModule,
+    HttpClientModule,
+    ModalModule.forRoot()
 
 
   ],
   providers: [
     BrandsService,
     CategoryService,
-    ProductService],
+    AlertifyService,
+    MerchantService,
+    ProductService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

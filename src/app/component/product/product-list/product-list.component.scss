@@ -10,7 +10,7 @@
   display: flex;
   width: 100%;
   flex: 1;
-  background: lightgrey;
+  background: #eee;
 }
 
 .side-nav {
@@ -67,6 +67,11 @@
   display: flex;
   justify-content: flex-start;
   align-items: center;
+}
+label {
+  margin-bottom: 0 !important;
+  margin-left: .3rem;
+  cursor: pointer;
 }
 .custom-price {
   display: flex;

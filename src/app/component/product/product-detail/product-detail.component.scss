@@ -9,14 +9,16 @@ input[type=radio]{
   cursor: pointer;
 }
 #grey-container {
-  background: lightgrey;
+  background: #eee;
 }
 
 #main-container {
+  max-width: 80rem;
+  margin: auto;
   padding-top: 2rem;
   display: flex;
   justify-content: space-between;
-  background: #fff;
+  background: #eee;
 }
 .img-con, .content {
   flex: 1;
@@ -31,7 +33,8 @@ input[type=radio]{
   flex-direction: column;
   justify-content: center;
   .main-header {
-    font-size: 2.2rem;
+    font-size: 2.1rem;
+    width: 80%;
   }
   .price {
     font-size: 1.7rem;
@@ -88,6 +91,11 @@ input[type=radio]{
   background: #33b27b;
   color: #fff;
   border-radius: .3rem;
+  cursor: pointer;
+  &:active,&:focus {
+    outline: none;
+    border: 1px solid #33b27b;
+  }
 }
 
 .save-to-cart {
@@ -96,6 +104,7 @@ input[type=radio]{
   justify-content: center;
   align-items: center;
   width: 40%;
+
 }
 .grey-circle {
   height: 3rem;
@@ -105,6 +114,7 @@ input[type=radio]{
   display: flex;
   justify-content: center;
   align-items: center;
+  cursor: pointer;
 }
 
 .social-handles {
@@ -130,6 +140,11 @@ input[type=radio]{
   margin-top: 1rem;
 }
 
+.error-msg {
+  margin-right: 2rem;
+  color: red;
+}
+
 
 .light-circle {
   height: 2rem;
@@ -139,13 +154,13 @@ input[type=radio]{
   display: flex;
   justify-content: center;
   align-items: center;
-  color: white;
+  color: #33b27b;
 }
 
 
 .sub-container {
   display: flex;
-  background: lightgray;
+  background: #f7f7f7;
   justify-content: flex-start;
   align-items: center;
   height: 5rem;
@@ -182,9 +197,32 @@ a, a:hover,a:active {
 
 .content-features {
   height: 100%;
-  background: lightgray;
+  background: #f8f9fa;
   padding: 0 2rem;
 }
 table th {
   width: 25%;
+}
+
+// Shipping
+.shipping {
+  display: flex;
+  flex-direction: column;
+}
+.row-unique {
+  display: flex;
+  align-items: center;
+  padding-bottom: 1rem;
+  & > * {
+    margin-right: 2rem;
+  }
+}
+
+.current {
+  color: #33b27b;
+}
+.feat-details {
+  min-height: 10rem;
+  background: #f8f9fa;
+
 }

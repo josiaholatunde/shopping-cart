@@ -1,4 +1,4 @@
-<div class="container mt-4">
+<!-- <div class="container mt-4">
   <div class="row">
       <div *ngIf="totalPrice" style="margin-left:83%; margin-top:3%;"  >
           <i class="fa fa-shopping-cart fa-lg" aria-hidden="true"></i>
@@ -13,7 +13,7 @@
           </div>
           <div class="card-body">
             <div>
-                <img  height="200px" width="200px" src="assets/img/{{product.imgUrl}}">
+                <img  height="200px" width="200px" src="../../../assets/img/phones/phone1.jpg">
             </div>
             <h6 class="mt-3">Description: {{product.description}}</h6>
             <h6>Price: {{product.price | currency : 'USD'}} * {{product.quantityAvailable}}</h6>
@@ -24,4 +24,44 @@
 <div *ngIf="cartItems.length === 0" style="margin-top:17%;" >
   <h4 class="text-center text-primary mt-4">Oops!!! No Item in Cart to display</h4>
 </div>
+</div> -->
+
+<div class="container">
+   <div class="row-1">
+        <h3>My Cart Items</h3>
+        <div *ngIf="totalPrice" class="price-con">
+            <h5>Total Price: {{totalPrice | currency : 'USD'}}</h5>
+            <a href="#" class="btn btn-primary">
+                <i class="fa fa-shopping-cart fa-lg" aria-hidden="true"></i>
+                Checkout
+            </a>
+        </div>
+    </div>
+    <div class="flex-con">
+       <div class="card-con"  *ngFor="let product of cartItems">
+        <div class="card mr-4" style="width: 14rem;height: 23rem;">
+          <div class="like-icon">
+            <div class="con  text-right">
+                <i class="fa fa-close"></i>
+            </div>
+          </div>
+          <div class="thumb-nail mt-3">
+            <img class="card-img-top" height="160px" src="../../../assets/img/phones/phone1.jpg">
+          </div>
+          <div class="card-body">
+            <div class="card-text text-center parent">
+              <h5 class="prod-name ellipsis" id="prod-name1" title="{{product.name}}">{{product.name}}</h5>
+              <h6 >Price: {{product.price | currency : 'USD'}} * {{product.quantityOrdered}} </h6>
+              <div class="small">Sold by Cc: {{ product.merchantName }}</div>
+              <h6 *ngIf="product.pickUpAvailable">Pickup Available </h6>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+      <div *ngIf="cartItems.length === 0" class="msg" >
+          <h3 class="text-center text-primary">Oops!!! No Item in Cart to display</h3>
+      </div>
 </div>
+
+

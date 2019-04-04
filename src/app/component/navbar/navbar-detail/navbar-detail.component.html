@@ -1,7 +1,7 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-dark">
+<nav class="navbar navbar-expand-lg bg-primary">
 <a class="navbar-brand" href="#">
-    <i class="fa fa-shopping-basket" aria-hidden="true"></i>
-  FashionStudio</a>
+    <i class="fas fa-store-alt" aria-hidden="true"></i>
+  <span>Shop</span>.ng</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse"
    data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -21,6 +21,88 @@
             View Cart
           </a>
       </li>
+      <li class="nav-item hamburger" (click)="openNav()" [ngClass]="hideHamburger ? 'di-none': ''" >
+          <a class="nav-link" >
+              <i class="fa fa-bars fa-md" aria-hidden="true"></i>
+          </a>
+      </li>
+    </ul>
+  </div>
+  <div class="side-bar" [ngClass]="shouldShow ? '': 'noWidth'" >
+    <ul>
+      <li (click)="closeNav()">
+        <i class="fa fa-times "></i>
+      </li>
+      <li class="sub-nav-item">Brands
+        <ul>
+          <li (click)="openBrandModal()"><a>
+            <i class="fa fa-plus"></i>
+            Create</a></li>
+          <li><a href="">
+            <i class="fa fa-eye"></i>
+            View</a></li>
+          <li><a href="">
+            <i class="fa fa-eye"></i>
+            Assign Brands Category</a></li>
+        </ul>
+      </li>
+      <li class="sub-nav-item">
+        Product
+        <ul>
+            <li (click)="openProductModal()"><a>
+              <i class="fa fa-plus"></i>
+              Create</a></li>
+            <li><a href="">
+              <i class="fa fa-eye"></i>
+              View</a></li>
+        </ul>
+      </li>
+      <li class="sub-nav-item">
+        Category
+        <ul>
+            <li (click)="openCategoryModal()"><a >
+              <i class="fa fa-plus"></i>
+              Create</a></li>
+            <li><a href="">
+              <i class="fa fa-eye"></i>
+              View</a></li>
+        </ul>
+      </li>
+      <li class="sub-nav-item">
+        Merchant
+        <ul>
+          <li (click)="openMerchantModal()"><a>
+            <i class="fa fa-plus"></i>
+            Create</a></li>
+          <li><a href="">
+            <i class="fa fa-eye"></i>
+            View</a></li>
+        </ul>
+      </li>
+      <li class="sub-nav-item">
+        Store
+        <ul>
+          <li (click)="openStoreModal()"><a>
+            <i class="fa fa-plus"></i>
+            Create</a></li>
+          <li><a href="">
+            <i class="fa fa-eye"></i>
+            View</a></li>
+        </ul>
+      </li>
     </ul>
   </div>
 </nav>
+
+<app-create-brand-form [categories]= "categories"></app-create-brand-form>
+
+<app-create-category-form></app-create-category-form>
+<app-create-store-form></app-create-store-form>
+
+
+<app-create-product-form [categories]= "categories"></app-create-product-form>
+
+<app-create-merchant-form></app-create-merchant-form>
+
+
+

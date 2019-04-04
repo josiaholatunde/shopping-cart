@@ -1,0 +1,28 @@
+<ng-template #template>
+    <div class="modal-header">
+      <h4 class="modal-title pull-left">Create Brand</h4>
+      <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <form [formGroup]="brandFormGroup" (ngSubmit)= "submitBrandForm()" >
+          <div class="form-group">
+              <label for="name">Name</label>
+              <input type="text" formControlName="name" class="form-input" id="name">
+              <span class="text-danger" *ngIf="brandFormGroup.get('name').invalid && brandFormGroup.get('name').touched">Name field is required</span>
+            </div>
+            <div class="form-group">
+              <label for="category">Category</label>
+              <select class="form-input" formControlName="categoryId" id="category">
+                <option value="null"></option>
+                <option *ngFor="let category of categories" [value]="category.id"> {{category.name}} </option>
+              </select>
+              <span class="text-danger" *ngIf="brandFormGroup.get('categoryId').invalid && brandFormGroup.get('categoryId').touched">Name field is required</span>
+            </div>
+            <div class="form-group">
+              <input type="submit" class="btn submit-btn btn-sm btn-danger" [disabled]="brandFormGroup.invalid" value="Create">
+            </div>
+      </form>
+    </div>
+  </ng-template>

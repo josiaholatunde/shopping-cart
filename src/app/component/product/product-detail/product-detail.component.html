@@ -53,27 +53,28 @@
     </div>
     <div class="content">
       <div class="main-header">
-        Samsung Galaxy S10 Dual Sim - 128gb, 8gb, 4g Lte - Prism Green
+        {{ selectedProduct.name }}
       </div>
       <div class="product-code">
-        Product Code: <strong>4224392</strong>
+        Product Code: <strong>{{selectedProduct.code}}</strong>
       </div>
       <div class="brand">
-        Brand: <strong>Samsung</strong>
+        Brand: <strong>{{selectedProduct.brandName}}</strong>
       </div>
       <div class="price gutter">
-        ₦320,000
+        ₦{{selectedProduct.price | number:'.2'}}
       </div>
       <div class="quantity gutter">
         <div>Quantity:</div>
         <div class="qty-btn">
-          <div class="btnq border">-</div>
-          <div class="btnq mid">1</div>
-          <div class="btnq border">+</div>
+          <div class="btnq border" (click)="decrement()">-</div>
+          <div class="btnq mid">{{displayQty}}</div>
+          <div class="btnq border" (click)="increment()">+</div>
         </div>
+        <div class="error-msg" *ngIf="showErrorMessage">You have reached the maximum qty for this product</div>
       </div>
       <div class="action gutter">
-        <button class="btn-green btn-md">Add to Cart</button>
+        <button class="btn-green btn-md" (click)="addToCart()"> Add to Cart</button>
         <div class="save-to-cart">
           <div class="grey-circle">
             <i class="fa fa-heart"></i>
@@ -82,10 +83,22 @@
         </div>
       </div>
       <div class="warranty-actions gutter">
-        <div>Pickup & Pay on Collection Available</div>
-        <div>Yu Break It, We Fix It</div>
-        <div>Konga Warehouse</div>
-        <div>Express Delivery Available</div>
+        <div>
+          <i class="fas fa-warehouse"></i>
+          Pickup & Pay on Collection Available
+        </div>
+        <div>
+          <i class="fas fa-tools"></i>
+          Yu Break It, We Fix It
+        </div>
+        <div>
+            <i class="fas fa-truck"></i>
+          Konga Warehouse
+        </div>
+        <div>
+          <i class="fas fa-truck"></i>
+          Express Delivery Available
+        </div>
       </div>
       <div class="social-handles gutter">
         <div> Share with friends</div>
@@ -103,42 +116,60 @@
  </div>
 </div>
  <div class="sub-container">
-    <div class="initial">K</div>
-    <div>Sold by Konga Store</div>
+    <div class="initial">{{initialOfMerchant | titlecase}}</div>
+    <div>Sold by {{selectedProduct.merchantName | titlecase}}</div>
     <a href="#">Learn More</a>
  </div>
 
- <div class="mt-3">
+ <div class="mt-3 feat-details">
     <div class="sub-container ">
-        <div class="item">Overview</div>
-        <div class="item">Description</div>
-        <div class="item">Shipping</div>
-        <div class="item">Warranty</div>
-        <div class="item">Return Policy</div>
-        <div class="item">Reviews</div>
+        <div class="item" (click)="setFeature('overview')" [ngClass]="showOverview ? 'current': ''" >Overview</div>
+        <div class="item" (click)="setFeature('description')" [ngClass]="showDescription ? 'current': ''">Description</div>
+        <div class="item" (click)="setFeature('shipping')" [ngClass]="showShipping ? 'current': ''">Shipping</div>
+        <div class="item" (click)="setFeature('warranty')" [ngClass]="showWarranty ? 'current': ''">Warranty</div>
+        <div class="item" (click)="setFeature('return-policy')" [ngClass]="showReturn ? 'current': ''">Return Policy</div>
+        <div class="item" (click)="setFeature('reviews')" [ngClass]="showReview ? 'current': ''">Reviews</div>
     </div>
 
     <div class="content-features">
-      <div class="description">
-        <table class="table table-bordered table-striped">
-          <tr>
-            <th>Colour</th>
-            <td>Green</td>
-          </tr>
-          <tr>
-            <th>Brand</th>
-            <td>Samsung</td>
-          </tr>
-          <tr>
-            <th>Screen Size</th>
-            <td>6.1 inches</td>
-          </tr>
-          <tr>
-            <th>Connectivity</th>
-            <td>Wifi + 4G</td>
+      <div class="overview" *ngIf="showOverview">
+          <div>Octa core</div>
+          <div>8GB RAM</div>
+          <div>128GB</div>
+      </div>
+      <div class="shipping" *ngIf="showShipping">
+          <div class="row-unique">
+            <div><i class="fa fa-truck fa-2x"></i></div>
+            <div>
+              <h6>Delivery</h6>
+              <span>Estimated delivery time: 1 - 14 days</span>
+            </div>
+          </div>
+          <div class="row-unique">
+            <div><i class="fa fa-truck fa-2x"></i></div>
+            <div>
+              <h6>Express Delivery Available</h6>
+              <span>Same day delivery: Order before 11AM and get it today</span>
+              <span>Next day delivery: Order after 11AM and get it tomorrow</span>
+            </div>
+          </div>
+      </div>
+      <div class="reviews" *ngIf="showReview">
+          No product review yet. Be the first to review this product.
+      </div>
+      <div class="return-policy" *ngIf="showReturn">
+          No returns or exchanges for this item.
+      </div>
+      <div class="warranty" *ngIf="showWarranty">
+        Warranty information unavailable for this item
+      </div>
+      <div class="description" *ngIf="showDescription">
+        <table class="table table-bordered table-striped" *ngIf="selectedProduct.features.length > 0">
+          <tr *ngFor="let feature of selectedProduct.features">
+            <th>{{feature.key}}</th>
+            <td>{{feature.value}}</td>
           </tr>
         </table>
       </div>
     </div>
-
  </div>

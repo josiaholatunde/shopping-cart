@@ -6,45 +6,57 @@
     <div class="browse-price">
       <div class="heading">Browse Price</div>
       <div class="flex-radio">
-         Under 2000
+        <input type="radio" name="price" (change)="filterPrice()" id="price1" [(ngModel)]="searchParams.price" value="0-1999">
+         <label for="price1">Under 2000</label>
       </div>
       <div class="flex-radio">
-         2000 -5000
+        <input type="radio" name="price" (change)="filterPrice()" id="price2"  [(ngModel)]="searchParams.price" value="2000-5000">
+        <label for="price2">2000 -5000</label>
       </div>
       <div class="flex-radio">
-         5000 - 1000
+        <input type="radio" name="price" (change)="filterPrice()" id="price3"  [(ngModel)]="searchParams.price" value="5001-10000">
+        <label for="price3">5001 - 10000</label>
       </div>
       <div class="flex-radio">
-         10000-20000
+        <input type="radio" name="price" (change)="filterPrice()" id="price4"  [(ngModel)]="searchParams.price" value="10001-20000">
+         <label for="price4">10001-20000</label>
+      </div>
+      <div class="flex-radio">
+        <input type="radio" name="price" (change)="filterPrice()" id="price5"  [(ngModel)]="searchParams.price" value="20001-max">
+         <label for="price5"> > 20000</label>
       </div>
     </div>
 <div class="browse-price">
     <div class="heading">Custom Price Range</div>
 </div>
     <div class="custom-price">
-      <input type="text" class="minInput" placeholder="Min">
-      <input type="text" class="minInput" placeholder="Max">
-      <input type="submit" class="go-btn" value="Go">
+      <form #priceFilterForm="ngForm" (ngSubmit)="filterMinMaxPrice()">
+          <input type="text" class="minInput" name="minPrice" [(ngModel)]="searchParams.minPrice" placeholder="Min" required>
+          <input type="text" class="minInput" name="maxPrice" [(ngModel)]="searchParams.maxPrice" placeholder="Max" required>
+          <input type="submit" class="go-btn" [disabled]="priceFilterForm.invalid" value="Go">
+      </form>
     </div>
     <div class="browse-price">
       <div class="heading">Brand</div>
     </div>
     <div class="search-brand">
-      <input type="search" name="brand" placeholder="Search Brand" class="brand">
+      <input type="search" name="brand" placeholder="Search Brand" [(ngModel)]="searchParams.brandName" (keyup)="filterBrand()" class="brand">
     </div>
-    <div class="checkbox-brand" *ngFor="let b of brands">
-      <input type="checkbox" id="brandName {{b.brandName}}" value="{{ b.brandName }}">
-      <label for="brandName {{b.brandName}}" class="brandName">
-        {{ b.brandName }}
-      </label>
+    <div *ngIf="brands.length > 0">
+      <div class="checkbox-brand" *ngFor="let b of brands">
+        <input type="checkbox"  id="brandName {{b.name}}" name="brandName{{b.name}}" (change)="filterProducts()" [(ngModel)]="b.isChecked">
+        <label for="brandName {{b.name}}" class="brandName">
+          {{ b.name }}
+        </label>
+      </div>
     </div>
   </div>
-  <div class="card-container" *ngIf="productList">
-    <div class="message" *ngIf="productList.length === 0">
-      <h1>Oops! There are currently no products to display</h1>
+  <div class="message" *ngIf="productList.length === 0">
+      <h3>Oops! There are currently no products to display</h3>
     </div>
-    <div class="flex-card">
-      <div *ngFor="let product of productList" class="" >
+  <div class="card-container">
+    <div class="flex-card" *ngIf="productList">
+      <div *ngFor="let product of productList">
         <app-product  [product]="product"></app-product>
       </div>
     </div>

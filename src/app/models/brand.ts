@@ -1,4 +1,6 @@
 export interface Brand {
-  id: number;
-  brandName: string;
+  id?: number;
+  name: string;
+  categoryId: number;
+  isChecked?: boolean;
 }

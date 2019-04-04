@@ -4,3 +4,101 @@ nav a, div ul li a {
 .nav-link {
   font-size: .8rem;
 }
+.navbar {
+  position: sticky;
+  z-index: 1000;
+  top: 0;
+}
+.text-prim {
+  color: rgb(147, 203, 82);
+}
+.bg-lightgrey {
+  background: #eee;
+}
+.nav-item {
+
+}
+.navbar-nav {
+  display: flex;
+  align-items: center;
+}
+.nav-item {
+  display: flex;
+  align-items: center;
+}
+.nav-item a {
+  width: 100%;
+  text-align: center;
+}
+.nav-item:hover:not(:last-child) {
+  background: #fff;
+  border-radius: .3rem;
+}
+.nav-item:hover:last-child a{
+  color: #fff !important;
+}
+.nav-item:hover a{
+  color: black !important;
+  text-align: center;
+}
+
+.hamburger {
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  position: absolute;
+  right: 2%;
+  top: 23%;
+  cursor: pointer;
+}
+
+.side-bar {
+  height: 83vh;
+  width: 25%;
+  position: fixed;
+  top: 8%;
+  right: 0;
+  z-index: 1;
+  overflow-x: hidden;
+  overflow-y: hidden;
+  transition: all .3s;
+  background: #eee;
+  padding: 2rem 1rem;
+
+}
+.side-bar > ul {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  list-style: none;
+}
+.side-bar  > ul > li {
+  padding: 1rem;
+  cursor: pointer;
+}
+.side-bar > ul > li:first-child {
+  align-self: flex-end;
+}
+.side-bar > ul > li a {
+  text-decoration: none;
+  color: black;
+  transition: .3s;
+
+}
+ul {
+  list-style: none;
+}
+.noWidth {
+  width: 0;
+}
+.di-none {
+  display: none;
+}
+.sub-nav-item ul li a{
+  padding-left: .7rem;
+}
+
+
+

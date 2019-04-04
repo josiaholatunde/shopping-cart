@@ -5,7 +5,7 @@ import { ProductService } from 'src/app/services/product.service';
 @Component({
   selector: 'app-view-cart',
   templateUrl: './view-cart.component.html',
-  styleUrls: ['./view-cart.component.css']
+  styleUrls: ['./view-cart.component.scss']
 })
 export class ViewCartComponent implements OnInit {
 
@@ -15,7 +15,7 @@ export class ViewCartComponent implements OnInit {
 
   ngOnInit() {
     this.cartItems = this.productService.getCartItems();
-    this.totalPrice = this.cartItems.reduce((accumulator,item) => accumulator + (item.price * item.quantityAvailable), 0);
+    this.totalPrice = this.cartItems.reduce((accumulator, item) => accumulator + (item.price * item.quantityOrdered), 0);
   }
 
 }

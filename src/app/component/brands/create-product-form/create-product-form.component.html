@@ -1,72 +1,111 @@
 <ng-template #templateProduct>
     <div class="modal-header">
       <h4 class="modal-title pull-left">Create Product</h4>
-      <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+      <button type="button" class="close pull-right" aria-label="Close" (click)="closeModal()">
         <span aria-hidden="true">&times;</span>
       </button>
     </div>
     <div class="modal-body">
-      <form [formGroup]="productFormgroup" (ngSubmit)= "submitProductForm()" >
-          <div class="form-group">
-              <label for="name">Name</label>
-              <input type="text" formControlName="name" class="form-input" id="name">
-              <span class="text-danger" *ngIf="productFormgroup.get('name').invalid && productFormgroup.get('name').touched">Name field is required</span>
+        <form [formGroup]="productFormgroup" (ngSubmit)= "submitProductForm()" >
+
+      <div class="tabbable">
+        <ul class="nav nav-tabs flex-tab">
+            <li class="active"><a href="#tab1" data-toggle="tab">Main</a></li>
+            <li><a href="#tab2" data-toggle="tab">Features Section</a></li>
+            <li><a href="#tab3" data-toggle="tab">Pictures Upload</a></li>
+        </ul>
+        <div class="tab-content">
+            <div class="tab-pane active" id="tab1">
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" formControlName="name" class="form-input" id="name">
+                        <span class="text-danger" *ngIf="productFormgroup.get('name').invalid && productFormgroup.get('name').touched">Name field is required</span>
+                    </div>
+                    <div class="form-group">
+                        <label for="price">Price</label>
+                        <input type="number" formControlName="price" class="form-input" id="price">
+                        <span class="text-danger" *ngIf="productFormgroup.get('price').invalid && productFormgroup.get('price').touched">
+                          Price field is required
+                        </span>
+                    </div>
+                    <div class="form-group">
+                        <label for="quantityAvailable">Quantity Avaialable</label>
+                        <input type="number" formControlName="quantityAvailable" class="form-input" id="quantityAvailable">
+                        <span class="text-danger" *ngIf="productFormgroup.get('quantityAvailable').invalid && productFormgroup.get('quantityAvailable').touched">
+                            Quantity Available field is required
+                        </span>
+                    </div>
+                      <div class="form-group">
+                        <label for="category">Category</label>
+                        <select class="form-input" formControlName="categoryId" id="category" (change)="loadBrands()">
+                          <option value="null"></option>
+                          <option *ngFor="let category of categories" [value]="category.id"> {{category.name}} </option>
+                        </select>
+                        <span class="text-danger" *ngIf="productFormgroup.get('categoryId').invalid && productFormgroup.get('categoryId').touched">Category name field is required</span>
+                      </div>
+                      <div class="form-group">
+                        <label for="merchant">Brand</label>
+                        <select class="form-input" formControlName="brandId" id="merchant">
+                          <option value="null">-</option>
+                          <option *ngFor="let brand of brands" [value]="brand.brandId"> {{brand.name}} </option>
+                        </select>
+                        <span class="text-danger" *ngIf="productFormgroup.get('brandId').invalid && productFormgroup.get('brandId').touched">Brand Name field is required</span>
+                      </div>
+                      <div class="form-group">
+                        <label for="store">Store</label>
+                        <select class="form-input" formControlName="storeId" id="store">
+                          <option value="null">-</option>
+                          <option *ngFor="let store of stores" [value]="store.id"> {{store.name}} </option>
+                        </select>
+                        <span class="text-danger" *ngIf="productFormgroup.get('storeId').invalid && productFormgroup.get('storeId').touched">Store Name field is required</span>
+                      </div>
+                      <div class="form-group">
+                        <label for="merchant">Merchant</label>
+                        <select class="form-input" formControlName="merchantId" id="merchant">
+                          <option value="null">-</option>
+                          <option *ngFor="let merchant of merchants" [value]="merchant.id"> {{merchant.name}} </option>
+                        </select>
+                        <span class="text-danger" *ngIf="productFormgroup.get('merchantId').invalid && productFormgroup.get('merchantId').touched">Merchant field is required</span>
+                      </div>
+                      <div class="form-group">
+                        <label for="pickupAvailable" >Pickup Available</label>
+                        <input type="radio" formControlName="pickUpAvailable" id="pickupAvailable" class="radio radio1" value="true"> Yes
+                        <input type="radio" formControlName="pickUpAvailable" id="pickupAvailable" class="radio" value="false"> No
+                        <span class="text-danger" *ngIf="productFormgroup.get('pickUpAvailable').invalid && productFormgroup.get('pickUpAvailable').touched">Pickup field is required</span>
+                      </div>
+                      <div class="form-group">
+                        <input type="submit" class="btn submit-btn btn-sm btn-danger" [disabled]="productFormgroup.invalid" value="Create">
+                      </div>
+            </div>
+            <div class="tab-pane" id="tab2">
+              <div
+              *ngFor="let item of productFormgroup.controls['features'].controls; let i = index"
+              formArrayName="features">
+                 <div [formGroupName]="i">
+                   <div class="form-group" >
+                      <label for="name">Description</label>
+                      <input type="text" formControlName="key" class="form-input" id="name">
+                    </div>
+                   <div class="form-group" >
+                      <label for="value">Value</label>
+                      <input type="text" formControlName="value" class="form-input" id="value">
+                    </div>
+                  </div>
+                 </div>
+                 <button type="button" class="btn btn-danger btn-sm" (click)="addNext()">Add Feature</button>
+              </div>
+            <div class="tab-pane" id="tab3">
+               <div class="form-group">
+                  <h4 class="mt-1">Upload Product Picture Preview</h4>
+                  <button type="button" class="btn btn-danger btn-sm mt-2" (click)="inputFileControl.click()">Upload</button>
+                  <input type="file" style="display:none" #inputFileControl (change)="onImagePicked($event)">
+                  <div class="img-preview mt-3" *ngIf="imagePreview && productFormgroup.get('image').valid">
+                    <img [src]="imagePreview" class="img" >
+                  </div>
+               </div>
+              </div>
+            </div>
           </div>
-          <div class="form-group">
-              <label for="price">Price</label>
-              <input type="text" formControlName="price" class="form-input" id="price">
-              <span class="text-danger" *ngIf="productFormgroup.get('price').invalid && productFormgroup.get('price').touched">
-                Price field is required
-              </span>
-          </div>
-          <div class="form-group">
-              <label for="quantityAvailable">Quantity Avaialable</label>
-              <input type="number" formControlName="quantityAvailable" class="form-input" id="quantityAvailable">
-              <span class="text-danger" *ngIf="productFormgroup.get('quantityAvailable').invalid && productFormgroup.get('quantityAvailable').touched">
-                  Quantity Available field is required
-              </span>
-          </div>
-            <div class="form-group">
-              <label for="category">Category</label>
-              <select class="form-input" formControlName="categoryId" id="category" (change)="loadBrands()">
-                <option value="null"></option>
-                <option *ngFor="let category of categories" [value]="category.id"> {{category.name}} </option>
-              </select>
-              <span class="text-danger" *ngIf="productFormgroup.get('categoryId').invalid && productFormgroup.get('categoryId').touched">Category name field is required</span>
-            </div>
-            <div class="form-group">
-              <label for="merchant">Brand</label>
-              <select class="form-input" formControlName="brandId" id="merchant">
-                <option value="null">-</option>
-                <option *ngFor="let brand of brands" [value]="brand.id"> {{brand.name}} </option>
-              </select>
-              <span class="text-danger" *ngIf="productFormgroup.get('brandId').invalid && productFormgroup.get('brandId').touched">Brand Name field is required</span>
-            </div>
-            <div class="form-group">
-              <label for="store">Store</label>
-              <select class="form-input" formControlName="storeId" id="store">
-                <option value="null">-</option>
-                <option *ngFor="let store of stores" [value]="store.id"> {{store.name}} </option>
-              </select>
-              <span class="text-danger" *ngIf="productFormgroup.get('storeId').invalid && productFormgroup.get('storeId').touched">Store Name field is required</span>
-            </div>
-            <div class="form-group">
-              <label for="merchant">Merchant</label>
-              <select class="form-input" formControlName="merchantId" id="merchant">
-                <option value="null">-</option>
-                <option *ngFor="let merchant of merchants" [value]="merchant.id"> {{merchant.name}} </option>
-              </select>
-              <span class="text-danger" *ngIf="productFormgroup.get('merchantId').invalid && productFormgroup.get('merchantId').touched">Merchant field is required</span>
-            </div>
-            <div class="form-group">
-              <label for="pickupAvailable" >Pickup Available</label>
-              <input type="radio" formControlName="pickupAvailable" id="pickupAvailable" class="radio radio1" value="Yes"> Yes
-              <input type="radio" formControlName="pickupAvailable" id="pickupAvailable" class="radio" value="No"> No
-              <span class="text-danger" *ngIf="productFormgroup.get('pickupAvailable').invalid && productFormgroup.get('pickupAvailable').touched">Pickup field is required</span>
-            </div>
-            <div class="form-group">
-              <input type="submit" class="btn submit-btn btn-sm btn-danger" [disabled]="productFormgroup.invalid" value="Create">
-            </div>
         </form>
-    </div>
+        </div>
   </ng-template>

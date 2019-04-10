@@ -12,8 +12,20 @@
       <li class="nav-item active">
         <a class="nav-link mr-4" href="#">Home</a>
       </li>
-      <li class="nav-item mr-4" *ngFor="let category of categories">
-        <a class="nav-link" [routerLink]="['products']" [queryParams]="{categoryId: category.id}">{{category.name}}</a>
+      <li class="nav-item mr-4 category-div" *ngFor="let category of categories" (mouseenter)="loadThirdCat(firstSubCatId, category.id)" (click)="changeRoute(category.id)">
+        <a class="nav-link">{{category.name}}</a>
+        <div class="tool-tip-container">
+            <div class="category-div__tool-tip">
+                <ul class="list-group">
+                  <li class="list-item" *ngFor="let subcat of category.subCategory" (mouseenter)="loadThirdCat(subcat.id, category.id)">{{ subcat.name }}</li>
+                </ul>
+            </div>
+            <div class="category-div__tool-tip2">
+                <ul class="list-group">
+                  <li class="list-item" *ngFor="let subcat of thirdCategory">{{ subcat.name }}</li>
+                </ul>
+            </div>
+        </div>
       </li>
       <li class="nav-item">
           <a class="nav-link" [routerLink]="['products','cart']">
@@ -38,10 +50,10 @@
           <li (click)="openBrandModal()"><a>
             <i class="fa fa-plus"></i>
             Create</a></li>
-          <li><a href="">
+          <li><a [routerLink]="['/brands','view']" routerLinkActive="active" >
             <i class="fa fa-eye"></i>
             View</a></li>
-          <li><a href="">
+          <li (click)="openBrandCategoryModal()"><a>
             <i class="fa fa-eye"></i>
             Assign Brands Category</a></li>
         </ul>
@@ -52,9 +64,9 @@
             <li (click)="openProductModal()"><a>
               <i class="fa fa-plus"></i>
               Create</a></li>
-            <li><a href="">
+            <li><a>
               <i class="fa fa-eye"></i>
-              View</a></li>
+              Add Features</a></li>
         </ul>
       </li>
       <li class="sub-nav-item">
@@ -63,7 +75,10 @@
             <li (click)="openCategoryModal()"><a >
               <i class="fa fa-plus"></i>
               Create</a></li>
-            <li><a href="">
+            <li (click)="openSubCategoryModal()"><a >
+              <i class="fa fa-plus"></i>
+              Create SubCategory</a></li>
+            <li><a [routerLink]="['/categories','view']" routerLinkActive="active">
               <i class="fa fa-eye"></i>
               View</a></li>
         </ul>
@@ -74,7 +89,7 @@
           <li (click)="openMerchantModal()"><a>
             <i class="fa fa-plus"></i>
             Create</a></li>
-          <li><a href="">
+          <li><a [routerLink]="['/merchants','view']" routerLinkActive="active">
             <i class="fa fa-eye"></i>
             View</a></li>
         </ul>
@@ -85,7 +100,7 @@
           <li (click)="openStoreModal()"><a>
             <i class="fa fa-plus"></i>
             Create</a></li>
-          <li><a href="">
+          <li><a [routerLink]="['/stores','view']" routerLinkActive="active">
             <i class="fa fa-eye"></i>
             View</a></li>
         </ul>
@@ -96,9 +111,13 @@
 
 <app-create-brand-form [categories]= "categories"></app-create-brand-form>
 
-<app-create-category-form></app-create-category-form>
-<app-create-store-form></app-create-store-form>
+<app-assign-brand-category-form [categories]= "categories"></app-assign-brand-category-form>
 
+<app-sub-category-form [categories]= "categories"></app-sub-category-form>
+
+<app-create-category-form></app-create-category-form>
+
+<app-create-store-form></app-create-store-form>
 
 <app-create-product-form [categories]= "categories"></app-create-product-form>
 

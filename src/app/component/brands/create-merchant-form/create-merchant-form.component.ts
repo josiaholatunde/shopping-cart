@@ -36,6 +36,15 @@ export class CreateMerchantFormComponent implements OnInit {
       name: new FormControl(null, {validators: [Validators.required, Validators.minLength(3)]})
     });
   }
+  closeModal() {
+    if (this.merchantFormGroup.dirty) {
+      this.alertify.confirm('Are you sure you want to close this modal, Information not saved would be lost? ', () => {
+        this.merchantFormGroup.reset();
+        this.modalRef.hide();
+      });
+    }
+    this.modalRef.hide();
+  }
 
   submitMerchantForm() {
     if (this.merchantFormGroup.invalid) {

@@ -4,6 +4,7 @@ import { Product } from 'src/app/models/product';
 import { User } from 'src/app/models/User';
 import { ProductService } from 'src/app/services/product.service';
 import { Router } from '@angular/router';
+import { BrandsService } from 'src/app/services/brand.service';
 
 
 @Component({
@@ -19,8 +20,12 @@ export class ProductComponent implements OnInit {
   productQty: number[];
   userQty: number;
   counter: number;
+  userIsAdmin = true;
+  user = {
+    isAdmin: true
+  };
 
-  constructor(private productService: ProductService, private router: Router) {
+  constructor(private productService: ProductService, private router: Router, private brandService:  BrandsService) {
     this.productQty = [];
     this.counter = 0;
    }
@@ -43,6 +48,13 @@ export class ProductComponent implements OnInit {
 
   showDialog() {
     this.display = true;
+  }
+  editProduct(code: string, catId: number) {
+    this.router.navigate(['products/edit'], {queryParams: {categoryId: catId, code}});
+    this.brandService.updateProductModalValue(true);
+  }
+  deleteProduct() {
+
   }
 
 }

@@ -1,7 +1,13 @@
 <div class="card-con" *ngIf="product">
-  <div class="card" style="width: 14rem;height: 26.7rem;">
+  <div class="card" style="width: 14rem;height: 28.2rem;">
     <div class="like-icon">
-      <div class="con  text-right">
+      <div class="con icon-edit text-primary" *ngIf="userIsAdmin" (click)="editProduct(product.code, product.categoryId)">
+          <i class="fa fa-pencil"></i>
+      </div>
+      <div class="con icon-del text-danger" *ngIf="userIsAdmin" (click)="deleteProduct(product.code)">
+          <i class="fa fa-times"></i>
+      </div>
+      <div class="con  text-right" *ngIf="!userIsAdmin">
           <i class="fa fa-heart"></i>
       </div>
     </div>
@@ -14,7 +20,7 @@
         <h5>{{product.price | currency : 'USD'}}</h5>
         <h6>Available Qty: {{product.quantityAvailable || 0}}</h6>
         <div class="small">Sold by Cc: {{ product.merchantName }}</div>
-        <h6 *ngIf="product.pickUpAvailable">Pickup Available </h6>
+        <div class="small" *ngIf="product.pickUpAvailable">Pickup Available </div>
           <div class="btn-con">
               <a  class="btn btn-primary btn-sm" [routerLink]="['/products',product.categoryName,product.code]">
                 Details

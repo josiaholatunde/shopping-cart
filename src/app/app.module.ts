@@ -29,6 +29,9 @@ import { CreateMerchantFormComponent } from './component/brands/create-merchant-
 import { CreateProductFormComponent } from './component/brands/create-product-form/create-product-form.component';
 import { CreateCategoryFormComponent } from './component/brands/create-category-form/create-category-form.component';
 import { CreateStoreFormComponent } from './component/brands/create-store-form/create-store-form.component';
+import { AssignBrandCategoryFormComponent } from './component/assign-brand-category-form/assign-brand-category-form.component';
+import { SubCategoryFormComponent } from './component/sub-category-form/sub-category-form.component';
+import { ViewSubjectComponent } from './component/view-subject/view-subject.component';
 
 @NgModule({
   declarations: [
@@ -46,7 +49,10 @@ import { CreateStoreFormComponent } from './component/brands/create-store-form/c
     CreateMerchantFormComponent,
     CreateProductFormComponent,
     CreateCategoryFormComponent,
-    CreateStoreFormComponent
+    CreateStoreFormComponent,
+    AssignBrandCategoryFormComponent,
+    SubCategoryFormComponent,
+    ViewSubjectComponent
   ],
   imports: [
     BrowserModule,

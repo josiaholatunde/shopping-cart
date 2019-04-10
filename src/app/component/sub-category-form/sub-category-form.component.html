@@ -1,0 +1,50 @@
+<ng-template #templateSubCategory>
+    <div class="modal-header">
+      <h4 class="modal-title pull-left">Create SubCategory</h4>
+      <button type="button" class="close pull-right" aria-label="Close" (click)="closeModal()">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <form [formGroup]="subCategoryFormGroup" (ngSubmit)= "submitCategoryForm()" >
+          <div class="form-group">
+              <label for="category">Name of Parent Category</label>
+              <select class="form-input" formControlName="categoryId" id="category" (change)="loadSubCat()">
+                  <option value="null">-</option>
+                  <option *ngFor="let category of categories" [value]="category.id"> {{category.name}} </option>
+              </select>
+              <span class="text-danger" *ngIf="subCategoryFormGroup.get('categoryId').invalid && subCategoryFormGroup.get('categoryId').touched">Name field is required</span>
+          </div>
+          <div
+          *ngFor="let item of subCategoryFormGroup.controls['subCategory'].controls; let i = index"
+          formArrayName="subCategory">
+             <div [formGroupName]="i">
+                <div class="form-group" >
+                    <label for="sub">Sub Category Type</label>
+                    <select class="form-input" formControlName="categoryTypeEnum" id="sub" (change)="carry()">
+                        <option value="null">-</option>
+                        <option *ngFor="let type of categoryType" #userCatTypeInput [value]="type.value" > {{type.displayName}} </option>
+                    </select>
+                </div>
+                <div class="form-group" *ngIf="isThirdCatSelected">
+                    <label for="sub">Select the Sub Category for which</label>
+                    <select class="form-input" formControlName="parentSubCatId" id="sub">
+                        <option value="null">-</option>
+                        <option *ngFor="let sub of subCategories" [value]="sub.id"> {{ sub.name }} </option>
+                    </select>
+                </div>
+                <div class="form-group" >
+                  <label for="name">Name of Sub Category</label>
+                  <input type="text" formControlName="name" class="form-input" id="name">
+                </div>
+            </div>
+              </div>
+             <div class="form-group">
+              <button type="button" class="btn btn-info btn-sm" (click)="addNext()">Add SubCategory</button>
+             </div>
+            <div class="form-group">
+              <input type="submit" class="btn submit-btn btn-sm btn-danger" [disabled]="subCategoryFormGroup.invalid" value="Create">
+            </div>
+      </form>
+    </div>
+  </ng-template>

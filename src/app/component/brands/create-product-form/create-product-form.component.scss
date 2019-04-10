@@ -1,0 +1,43 @@
+.label {
+  margin-left: 1rem;
+}
+.radio1 {
+  margin-left: .4rem;
+}
+.radio {
+  cursor: pointer;
+}
+.flex-tab li {
+  margin: 0 1.2rem;
+
+  & a {
+    text-decoration: none;
+  }
+  &:hover {
+    background: #007bff;
+    border-radius: .2rem;
+
+  }
+  &:hover a {
+    color: #fff;
+    padding: .3rem;
+  }
+}
+.flex-tab li:first-child {
+  margin-left: 0;
+}
+.modal-body {
+  min-height: 45rem;
+}
+
+.img-preview {
+  height: 18rem;
+  width: 100%;
+}
+.img {
+  width: 50%;
+  height: 100%;
+}
+.btn {
+  box-shadow: none !important;
+}

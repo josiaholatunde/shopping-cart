@@ -11,6 +11,7 @@
   width: 100%;
   flex: 1;
   background: #eee;
+  height: 90vh;
 }
 
 .side-nav {
@@ -31,6 +32,7 @@
 }
 .card-container {
   height: 100%;
+  width: 100%;
   display: flex;
   justify-content: space-between;
   padding: 1rem;
@@ -42,6 +44,14 @@
   & > *:not(:last-child) {
     margin-right: 2rem;
   }
+}
+.flex-center {
+  height: 100%;
+  width: 100%;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .browse-price {
   margin-top: .4rem;

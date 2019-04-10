@@ -35,19 +35,29 @@ export class CreateStoreFormComponent implements OnInit {
   openModal(template: TemplateRef<any>) {
     this.modalRef = this.modalService.show(template);
   }
+  closeModal() {
+    if (this.storeFormGroup.dirty) {
+      this.alertify.confirm('Are you sure you want to close this modal, Information not saved would be lost? ', () => {
+        this.storeFormGroup.reset();
+        this.modalRef.hide();
+      });
+    }
+  }
 
   initialiseCategoryForm(): any {
     this.storeFormGroup = new FormGroup({
-      name: new FormControl(null, {validators: [Validators.required, Validators.minLength(3)]})
+      name: new FormControl(null, {validators: [Validators.required, Validators.minLength(3)]}),
+      location: new FormControl(null, {validators: [Validators.required]}),
     });
   }
   submitStoreForm() {
     if (this.storeFormGroup.invalid) {
       return;
     }
-    const {name} = this.storeFormGroup.value;
+    const {name, location} = this.storeFormGroup.value;
     const storeToCreateDto = {
-      name
+      name,
+      location
     };
     this.storeService.createStore(storeToCreateDto).subscribe(res => {
       this.alertify.success('Successfully created brand');

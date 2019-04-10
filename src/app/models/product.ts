@@ -8,9 +8,13 @@ export class Product {
   description: string;
   price: number;
   imgUrl: string;
+  categoryId: number;
   categoryName: string;
   merchantName: string;
+  merchantId: number;
   brandName: string;
+  brandId: number;
+  storeId: number;
   pickUpAvailable: boolean;
   quantityOrdered: number;
   keyFeatures: string[];

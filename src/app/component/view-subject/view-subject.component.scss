@@ -1,0 +1,22 @@
+.flex-container {
+  height: 50rem;
+  width: 50%;
+}
+.min-container {
+  width: 100rem;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.heading-text {
+  font-size: 2.6rem;
+}
+
+.form-group {
+  display: flex;
+  width: 100%;;
+}
+.table {
+  width: 100%;;
+}

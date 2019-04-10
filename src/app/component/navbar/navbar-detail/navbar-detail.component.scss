@@ -15,9 +15,7 @@ nav a, div ul li a {
 .bg-lightgrey {
   background: #eee;
 }
-.nav-item {
 
-}
 .navbar-nav {
   display: flex;
   align-items: center;
@@ -25,10 +23,16 @@ nav a, div ul li a {
 .nav-item {
   display: flex;
   align-items: center;
+  cursor: pointer;
+  &:hover .tool-tip-container, &:hover .tool-tip-container {
+    visibility: visible;
+  }
+
 }
 .nav-item a {
   width: 100%;
   text-align: center;
+
 }
 .nav-item:hover:not(:last-child) {
   background: #fff;
@@ -100,5 +104,112 @@ ul {
   padding-left: .7rem;
 }
 
+// Tool Tip
+.category-div {
+  position: relative;
+  .tool-tip-container {
+    visibility: hidden;
+    position: absolute;
+    width: 30rem;
+    min-height: 30rem;
+    padding-top: 2rem;
+    top: .2rem;
+    left: 0;
+    display: flex;
+  }
 
+  &__tool-tip {
+    flex: 1;
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    margin-top: 1rem;
+    text-align: center;
+    background: white;
+    box-shadow: 0px -1px 1px #eee;
+
+    .list-group {
+      list-style: none;
+      .list-item {
+        text-align: left;
+        padding: .7rem;
+        &:hover {
+          background: #F2F3F5;
+        }
+      }
+
+    }
+
+  }
+  &__tool-tip2 {
+    flex: 1;
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    margin-top: 1rem;
+    text-align: center;
+    background: white;
+    box-shadow: 0px -1px 1px #eee;
+
+    .list-group {
+      list-style: none;
+      .list-item {
+        text-align: left;
+        padding: .7rem;
+        &:hover {
+          background: #F2F3F5;
+        }
+      }
+
+    }
+
+  }
+  &__tool-tip::after {
+    content: " ";
+    position: absolute;
+    top: 3.4%;
+    left: 3%;
+    border-style: solid;
+    border-width: 1rem;
+    border-color: transparent transparent #eee transparent;
+
+  }
+}
+
+
+.category-div:nth-of-type(6) {
+  display: none;
+  .tool-tip-container {
+    display: none;
+  }
+
+  &:hover &__tool-tip, &:hover &__tool-tip2 {
+    display: none;
+  }
+
+  &__tool-tip {
+
+   /*  visibility: hidden;
+    flex: 1;
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    margin-top: 1rem;
+    text-align: center;
+    background: white;
+    box-shadow: 0px -1px 1px #eee;
+
+    .list-group {
+      list-style: none;
+      .list-item {
+        text-align: left;
+        padding: .7rem;
+        &:hover {
+          background: #F2F3F5;
+        }
+      } */
+
+    }
+
+  }
 

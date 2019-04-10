@@ -7,6 +7,7 @@ import { forkJoin } from 'rxjs';
 import { BrandsService } from 'src/app/services/brand.service';
 import { Brand } from 'src/app/models/brand';
 import { AlertifyService } from 'src/app/services/alertify.service';
+import { CategoryService } from 'src/app/services/category.service';
 
 
 @Component({
@@ -23,22 +24,26 @@ export class ProductListComponent implements OnInit {
   searchParams: any = {};
   categoryId: any;
   brandsReference: Brand[];
-  constructor(private route: ActivatedRoute, private productService: ProductService, private brandsService: BrandsService
-    , private alertify: AlertifyService) {}
+  constructor(private route: ActivatedRoute, private productService: ProductService, private brandsService: BrandsService,
+    private categoryService: CategoryService, private alertify: AlertifyService) {}
 
   ngOnInit() {
     this.route.queryParamMap.subscribe((param: Params) => {
       if (param.params['categoryId']) {
        this.categoryId = param.params['categoryId'];
         forkJoin(this.productService.getProducts(this.categoryId),
-                  this.brandsService.getBrands(this.categoryId)).subscribe(([res, res2]) => {
+                  this.brandsService.getBrands(this.categoryId),
+                  this.categoryService.getCategory(this.categoryId)).subscribe(([res, res2, res3]) => {
                     this.productList = res;
-                    this.productType = this.productList[0].categoryName;
+                    this.productType = res3.name;
                     this.brands = res2;
                     this.brandsReference = this.brands;
-
+                    this.productService.updateProducts([...this.productList]);
         });
       }
+    });
+    this.productService.productsObservable().subscribe(res => {
+      this.productList = res;
     });
   }
   filterMinMaxPrice() {
@@ -60,7 +65,7 @@ export class ProductListComponent implements OnInit {
     let str = '';
     this.brands.forEach(( br , i) => {
       if (br.isChecked) {
-        str += br.id + ',';
+        str += br.brandId + ',';
       }
     });
     str = str.slice(0, str.length - 1);

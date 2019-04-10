@@ -36,18 +36,25 @@ export class CreateBrandFormComponent implements OnInit {
 
   initialiseBrandForm(): any {
     this.brandFormGroup = new FormGroup({
-      name: new FormControl(null, {validators: [Validators.required]}),
-      categoryId: new FormControl(null, {validators: [Validators.required]}),
+      name: new FormControl(null, {validators: [Validators.required]})
     });
+  }
+  closeModal() {
+    if (this.brandFormGroup.dirty) {
+      this.alertify.confirm('Are you sure you want to close this modal, Information not saved would be lost? ', () => {
+        this.brandFormGroup.reset();
+        this.modalRef.hide();
+      });
+    }
+    this.modalRef.hide();
   }
   submitBrandForm() {
     if (this.brandFormGroup.invalid) {
       return;
     }
-    const {name, categoryId} = this.brandFormGroup.value;
+    const {name} = this.brandFormGroup.value;
     const brandToCreateDto = {
-      name,
-      categoryId
+      name
     };
     this.brandService.createBrand(brandToCreateDto).subscribe(res => {
       this.alertify.success('Successfully created brand');

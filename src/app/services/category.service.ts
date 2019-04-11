@@ -16,9 +16,15 @@ export class CategoryService {
   getCategory(id: number) {
     return this.http.get<Category>(`${this.baseUrl}/${id}`).pipe();
   }
+  deleteCategory(id: number) {
+    return this.http.delete(`${this.baseUrl}/${id}`).pipe();
+  }
 
   getCategories(): Observable<Category[]> {
     return this.http.get<Category[]>(this.baseUrl).pipe();
+  }
+  getCategoriesWithoutPage(): Observable<Category[]> {
+    return this.http.get<Category[]>(`${this.baseUrl}/all`).pipe();
   }
   getSubCategories(catId: number): Observable<SubCategory[]> {
     return this.http.get<SubCategory[]>(`${this.baseUrl}/${catId}/subCategories`).pipe();
@@ -28,6 +34,9 @@ export class CategoryService {
   }
   createCategory(categoryToCreate: any): Observable<Category> {
     return this.http.post<Category>(this.baseUrl, categoryToCreate).pipe();
+  }
+  editCategory(categoryToEdit: any): Observable<Category> {
+    return this.http.put<Category>(`${this.baseUrl}/${categoryToEdit.id}`, categoryToEdit).pipe();
   }
   createSubCategory(categoryToCreate: any) {
     return this.http.post(`${this.baseUrl}/sub`, categoryToCreate).pipe();

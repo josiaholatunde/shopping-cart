@@ -4,6 +4,9 @@ import { AlertifyService } from 'src/app/services/alertify.service';
 import { MerchantService } from 'src/app/services/merchant.service';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 import { BrandsService } from 'src/app/services/brand.service';
+import { Router, Params, ActivatedRoute } from '@angular/router';
+import { FormMode } from 'src/app/models/FormMode';
+import { Merchant } from 'src/app/models/merchant';
 
 
 @Component({
@@ -16,16 +19,34 @@ export class CreateMerchantFormComponent implements OnInit {
   merchantFormGroup: FormGroup;
   modalRef: BsModalRef;
   @ViewChild('templateMerchant') templateMerchant: TemplateRef<any>;
+  formMode = FormMode.create;
+  merchantFromDb: Merchant;
 
 
-  constructor(private modalService: BsModalService, private merchantService: MerchantService, private alertify: AlertifyService,
+  constructor(private modalService: BsModalService, private merchantService: MerchantService, private router: Router,
+    private alertify: AlertifyService, private route: ActivatedRoute,
      private brandService: BrandsService) { }
 
   ngOnInit() {
-    this.brandService.currentMerchantModalObservable().subscribe(res => {
-      this.openModal(this.templateMerchant);
-    });
     this.initialiseMerchantForm();
+    this.brandService.currentMerchantModalObservable().subscribe(res => {
+      this.route.queryParamMap.subscribe((param: Params) => {
+        if (param.params['id']) {
+          this.formMode = FormMode.edit;
+          this.merchantService.getMerchant(+param.params['id']).subscribe((merchant: Merchant) => {
+            this.merchantFromDb = merchant;
+            const {id, name} = merchant;
+            this.merchantFormGroup.setValue({
+              name
+            });
+          });
+        } else {
+          this.formMode = FormMode.create;
+        }
+        this.openModal(this.templateMerchant);
+      });
+    });
+
   }
   openModal(template: TemplateRef<any>) {
     this.modalRef = this.modalService.show(template);
@@ -51,16 +72,32 @@ export class CreateMerchantFormComponent implements OnInit {
       return;
     }
     const {name} = this.merchantFormGroup.value;
-    const merchantToCreateDto = {
-      name
-    };
-    this.merchantService.createMerchant(merchantToCreateDto).subscribe(res => {
-      this.alertify.success('Successfully created Merchant');
-    }, err => this.alertify.error(err),
-    () => {
-      this.merchantFormGroup.reset();
-      this.modalRef.hide();
-    });
+    if (this.formMode === FormMode.create) {
+      const merchantToCreateDto = {
+        name
+      };
+      this.merchantService.createMerchant(merchantToCreateDto).subscribe(res => {
+        this.alertify.success('Successfully created Merchant');
+      }, err => this.alertify.error(err),
+      () => {
+        this.merchantFormGroup.reset();
+        this.modalRef.hide();
+      });
+    } else {
+      const merchantToEditDto = {
+        id: this.merchantFromDb.id,
+        name
+      };
+      this.merchantService.editMerchant(merchantToEditDto).subscribe(res => {
+        this.alertify.success('Successfully edited Merchant');
+      }, err => this.alertify.error(err),
+      () => {
+        this.merchantFormGroup.reset();
+        this.modalRef.hide();
+        this.router.navigate(['categories/view'], {queryParams: {id: this.merchantFromDb.id} });
+      });
+    }
+
   }
 
 }

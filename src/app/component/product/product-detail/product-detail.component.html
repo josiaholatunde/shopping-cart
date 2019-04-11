@@ -1,55 +1,8 @@
-<!-- <div class="container">
-  <div class="row text-center mt-3">
-    <div class="col-md-5">
-      <h4>Product Details</h4>
-      </div>
-  </div>
-  <div class="row mt-4">
-    <div class="col-md-5">
-      <img class="card-img-top" height="90%" src="assets/img/{{selectedProduct.imgUrl}}">
-    </div>
-    <div class="col-md-7" style="margin-top:-1%">
-      <h3> {{selectedProduct.name}}</h3>
-      <h5>{{selectedProduct.description}}</h5>
-      <h5 class="text-primary">{{selectedProduct.price | currency : 'USD'}}</h5>
-      <span><a (click)="writeReview()">Write a Review</a></span>
-      <span><i class="fa fa-star-o fa-md"></i></span>
-      <div *ngIf="isShippingFree; else notFreeShipping">
-          <h5>Free Shipping</h5>
-      </div>
-      <div *ngIf="selectedProduct.keyFeatures">
-        <ul>
-          <li *ngFor="let feature of selectedProduct.keyFeatures">{{feature}}</li>
-        </ul>
-      </div>
-      <ng-template #notFreeShipping>
-          <h5>Payment for shipping</h5>
-      </ng-template>
-      <input type="radio" class="radio-inline" name="modeOfPayment" [(ngModel)]="modeOfPayment" value="pod">Pay on Delivery
-      <input type="radio" class="radio-inline" name="modeOfPayment" [(ngModel)]="modeOfPayment" value="cash">Visa/Verve/Mastercard Payment
-      <h5>Arrival Date</h5>
-      <div class="form-group">
-        <div>
-          <label for="quantity">Quantity:</label>
-        <select name="quantity" class="col-md-4 form-control" [(ngModel)]="selectedProduct.quantityAvailable">
-         <option [value]="i" *ngFor="let i of quantity">{{i}}</option>
-        </select>
-        </div>
-      </div>
 
-      <button type="submit" class="btn btn-danger btn-sm">
-          <i class="fa fa-shopping-cart" aria-hidden="true"></i>
-        Add to Cart
-      </button>
-      <button type="submit" class="btn btn-success btn-sm ml-3">BUY NOW</button>
-    </div>
-  </div>
-</div>
- -->
  <div id="grey-container">
  <div id="main-container">
     <div class="img-con">
-      <img src="../../../../assets/img/phones/phone1.jpg" alt="Product">
+      <img [src]="selectedProduct.imgUrl || '../../../../assets/img/phones/phone1.jpg'" alt="Product">
     </div>
     <div class="content">
       <div class="main-header">

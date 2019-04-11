@@ -10,6 +10,7 @@ import { MerchantService } from 'src/app/services/merchant.service';
 import { Router } from '@angular/router';
 import { CategoryService } from 'src/app/services/category.service';
 import { SubCategory } from 'src/app/models/SubCategory';
+import { Subject } from 'src/app/models/Subject';
 
 @Component({
   selector: 'app-navbar-detail',
@@ -34,6 +35,14 @@ export class NavbarDetailComponent implements OnInit {
   shouldShowSubCategoryModal: boolean;
   thirdCategory: SubCategory[];
   firstSubCatId: number;
+  merchantSubjectId= Subject.Merchant;
+  brandSubjectId = Subject.Brand;
+  storeSubjectId = Subject.Store;
+  categorySubjectId = Subject.Category;
+  subCategorySubjectId = Subject.SubCategory;
+  shouldDisplayToolTip = true;
+
+
 
   constructor(private modalService: BsModalService, private brandService: BrandsService, private route: Router,
     private categoryService: CategoryService,
@@ -80,10 +89,11 @@ export class NavbarDetailComponent implements OnInit {
     this.brandService.updateBrandCategoryModalValue(this.shouldShowBrandCategoryModal);
   }
   changeRoute(categoryId: number) {
+    this.shouldDisplayToolTip = false;
     this.route.navigate(['products'], { queryParams: { categoryId: categoryId } });
   }
   loadThirdCat(subCatId: number, catId: number) {
-    console.log('i just ran men');
+    this.shouldDisplayToolTip = true;
     this.categoryService.getThirdSubCategories(subCatId, catId).subscribe(res => {
       this.thirdCategory = res;
     });

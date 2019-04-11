@@ -15,8 +15,17 @@ export class MerchantService {
   createMerchant(merchant: any) {
     return this.http.post(this.baseUrl, merchant).pipe();
   }
+  editMerchant(merchant: any) {
+    return this.http.put(`${this.baseUrl}/${merchant.id}`, merchant).pipe();
+  }
 
   getMerchants(): Observable<Merchant[]> {
     return this.http.get<Merchant[]>(this.baseUrl).pipe();
+  }
+  getMerchant(id: number): Observable<Merchant> {
+    return this.http.get<Merchant>(`${this.baseUrl}/${id}`).pipe();
+  }
+  deleteMerchant(id: number) {
+    return this.http.delete(`${this.baseUrl}/${id}`).pipe();
   }
 }

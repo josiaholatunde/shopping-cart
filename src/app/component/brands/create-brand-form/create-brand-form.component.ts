@@ -4,6 +4,9 @@ import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { BrandsService } from 'src/app/services/brand.service';
 import { AlertifyService } from 'src/app/services/alertify.service';
+import { ActivatedRoute, Params } from '@angular/router';
+import { FormMode } from 'src/app/models/FormMode';
+import { Brand } from 'src/app/models/brand';
 
 @Component({
   selector: 'app-create-brand-form',
@@ -18,15 +21,32 @@ export class CreateBrandFormComponent implements OnInit {
   @ViewChild('template') template: TemplateRef<any>;
   modalRef: BsModalRef;
   brandFormGroup: FormGroup;
+  formMode = FormMode.create;
+  brandFromDb: Brand;
 
 
-  constructor(private modalService: BsModalService, private brandService: BrandsService, private alertify: AlertifyService) { }
+  constructor(private modalService: BsModalService, private brandService: BrandsService, private route: ActivatedRoute,
+    private alertify: AlertifyService) { }
 
   ngOnInit(): void {
+    this.initialiseBrandForm();
     this.brandService.currentBrandModalObservable().subscribe(res => {
+      this.route.queryParamMap.subscribe((param: Params) => {
+        if (param.params['id']) {
+          this.formMode = FormMode.edit;
+          this.brandService.getBrand(+param.params['id']).subscribe((brand: Brand) => {
+            this.brandFromDb = brand;
+            const {id, name} = brand;
+            this.brandFormGroup.setValue({
+              name
+            });
+          });
+        } else {
+          this.formMode = FormMode.create;
+        }
+      });
       this.openModal(this.template);
     });
-    this.initialiseBrandForm();
 
   }
 
@@ -53,17 +73,30 @@ export class CreateBrandFormComponent implements OnInit {
       return;
     }
     const {name} = this.brandFormGroup.value;
-    const brandToCreateDto = {
-      name
-    };
-    this.brandService.createBrand(brandToCreateDto).subscribe(res => {
-      this.alertify.success('Successfully created brand');
-    }, err => this.alertify.error(err),
-    () => {
-      this.modalRef.hide();
-      this.brandFormGroup.reset();
-    });
-
+    if (this.formMode === FormMode.create) {
+      const brandToCreateDto = {
+        name
+      };
+      this.brandService.createBrand(brandToCreateDto).subscribe(res => {
+        this.alertify.success('Successfully created brand');
+      }, err => this.alertify.error(err),
+      () => {
+        this.modalRef.hide();
+        this.brandFormGroup.reset();
+      });
+    } else {
+      const brandToEditDto = {
+        id: this.brandFromDb.id,
+        name
+      };
+      this.brandService.editBrand(brandToEditDto).subscribe(res => {
+        this.alertify.success('Successfully edited brand');
+      }, err => this.alertify.error(err),
+      () => {
+        this.modalRef.hide();
+        this.brandFormGroup.reset();
+      });
+    }
   }
 }
 

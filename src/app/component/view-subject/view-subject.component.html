@@ -1,16 +1,15 @@
-<div class="container">
+<div class="flex-container">
   <div class="min-container">
-      <div class="heading-text">Our List of Merchants</div>
+      <div class="heading-text">Our List of {{subjectName}}</div>
       <div class="form">
         <div class="form-group">
-          <label for="merchant">Select a Merchant</label>
-          <select class="form-control" name="subject" >
-            <option value=""></option>
-            <option value=""></option>
+          <label for="merchant">Select a {{subjectName}}</label>
+          <select class=" input" name="subject" [(ngModel)]="subjectParams" (change)="populateTableWithSubject()">
+            <option [value]="subject.id" *ngFor="let subject of subjectList" [selected]="subject.id" > {{subject.name | titlecase}} </option>
           </select>
         </div>
       </div>
-      <div class="main-table">
+      <div class="main-table" *ngIf="currentSubject">
           <table class="table table-striped">
               <tr>
                 <th>Id</th>
@@ -18,9 +17,12 @@
                 <th>Action</th>
               </tr>
               <tr>
-                <td>Id Value</td>
-                <td>Name Value</td>
-                <td>Action Value</td>
+                <td>{{ currentSubject.id }}</td>
+                <td>{{ currentSubject.name | titlecase }}</td>
+                <td>
+                  <i class="fa fa-pencil fa-2x mr-4 text-success" (click)="openUpdateModal()"></i>
+                  <i class="fa fa-trash-o fa-2x text-danger" (click)="deleteSub()"></i>
+                </td>
               </tr>
           </table>
       </div>

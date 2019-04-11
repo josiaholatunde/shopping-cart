@@ -17,6 +17,11 @@ export class AppComponent implements OnInit {
     this.categoryService.getCategories().subscribe(res => {
       this.categories = res;
     });
+   /*  const body = document.getElementsByTagName('body')[0];
+    body.addEventListener('click', () => {
+      const sideBar = document.getElementById('side-bar');
+      sideBar.classList.add('d-non');
+    }); */
   }
 
 }

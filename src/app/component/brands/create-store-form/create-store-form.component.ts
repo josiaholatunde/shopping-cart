@@ -6,6 +6,9 @@ import { AlertifyService } from 'src/app/services/alertify.service';
 import { Category } from 'src/app/models/category';
 import { CategoryService } from 'src/app/services/category.service';
 import { StoreService } from 'src/app/services/store.service';
+import { ActivatedRoute, Params, Router } from '@angular/router';
+import { FormMode } from 'src/app/models/FormMode';
+import { Store } from 'src/app/models/store';
 
 @Component({
   selector: 'app-create-store-form',
@@ -19,18 +22,36 @@ export class CreateStoreFormComponent implements OnInit {
   @ViewChild('templateStore') templateStore: TemplateRef<any>;
   modalRef: BsModalRef;
   storeFormGroup: FormGroup;
+  formMode = FormMode.create;
+  storeFromDb: Store;
 
 
-  constructor(private modalService: BsModalService,private brandService: BrandsService, private storeService: StoreService,
+  constructor(private modalService: BsModalService, private brandService: BrandsService, private router: Router,
+    private route: ActivatedRoute , private storeService: StoreService,
     private alertify: AlertifyService) { }
 
   ngOnInit(): void {
+    this.initialiseCategoryForm();
     this.brandService.currentStoreModalObservable().subscribe(res => {
+      this.route.queryParamMap.subscribe((param: Params) => {
+        if (param.params['id']) {
+          this.formMode = FormMode.edit;
+          this.storeService.getStore(+param.params['id']).subscribe((store: Store) => {
+            this.storeFromDb = store;
+            const {id, name, location} = store;
+            this.storeFormGroup.setValue({
+              name,
+              location
+            });
+          });
+        } else {
+          this.formMode = FormMode.create;
+        }
       this.openModal(this.templateStore);
     });
-    this.initialiseCategoryForm();
 
-  }
+  });
+}
 
   openModal(template: TemplateRef<any>) {
     this.modalRef = this.modalService.show(template);
@@ -55,18 +76,34 @@ export class CreateStoreFormComponent implements OnInit {
       return;
     }
     const {name, location} = this.storeFormGroup.value;
-    const storeToCreateDto = {
-      name,
-      location
-    };
-    this.storeService.createStore(storeToCreateDto).subscribe(res => {
-      this.alertify.success('Successfully created brand');
-    }, err => this.alertify.error(err),
-    () => {
-      this.storeFormGroup.reset();
-      this.modalRef.hide();
-    });
+    if (this.formMode === FormMode.create) {
+      const storeToCreateDto = {
+        name,
+        location
+      };
+      this.storeService.createStore(storeToCreateDto).subscribe(res => {
+        this.alertify.success('Successfully created brand');
+      }, err => this.alertify.error(err),
+      () => {
+        this.storeFormGroup.reset();
+        this.modalRef.hide();
+      });
+    } else {
+      const storeToEditDto = {
+        id: this.storeFromDb.id,
+        name,
+        location
+      };
+      this.storeService.editStore(storeToEditDto).subscribe(res => {
+        this.alertify.success('Successfully edited Store');
+      }, err => this.alertify.error(err),
+      () => {
+        this.storeFormGroup.reset();
+        this.modalRef.hide();
+        this.router.navigate(['categories/view'], {queryParams: {id: this.storeFromDb.id} });
 
+      });
+    }
   }
 
 }

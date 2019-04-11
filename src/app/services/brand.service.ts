@@ -75,6 +75,15 @@ export class BrandsService {
   getAllBrands(): Observable<Brand[]> {
     return this.http.get<Brand[]>(`${this.baseUrl}/all`).pipe();
   }
+  getBrand(id: number): Observable<Brand> {
+    return this.http.get<Brand>(`${this.baseUrl}/${id}`).pipe();
+  }
+  deleteBrand(id: number) {
+    return this.http.delete(`${this.baseUrl}/${id}`).pipe();
+  }
+  editBrand(brandToEdit: any): Observable<Brand> {
+    return this.http.put<Brand>(`${this.baseUrl}/${brandToEdit.id}`, brandToEdit).pipe();
+  }
   createBrand(brandToCreateDto: any) {
     return this.http.post<Brand>(this.baseUrl, brandToCreateDto).pipe();
   }

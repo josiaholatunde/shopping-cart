@@ -18,6 +18,15 @@ export class StoreService {
   getStores(): Observable<Store[]> {
     return this.http.get<Store[]>(this.baseUrl).pipe();
   }
+  getStore(id: number): Observable<Store> {
+    return this.http.get<Store>(`${this.baseUrl}/${id}`).pipe();
+  }
+  deleteStore(id: number): Observable<Store> {
+    return this.http.delete<Store>(`${this.baseUrl}/${id}`).pipe();
+  }
+  editStore(storeToEdit: any): Observable<Store> {
+    return this.http.put<Store>(`${this.baseUrl}/${storeToEdit.id}`, storeToEdit).pipe();
+  }
   createStore(storeToCreate: any): Observable<Store> {
     return this.http.post<Store>(this.baseUrl, storeToCreate).pipe();
   }

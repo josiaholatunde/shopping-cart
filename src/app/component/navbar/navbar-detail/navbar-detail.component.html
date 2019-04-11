@@ -12,9 +12,9 @@
       <li class="nav-item active">
         <a class="nav-link mr-4" href="#">Home</a>
       </li>
-      <li class="nav-item mr-4 category-div" *ngFor="let category of categories" (mouseenter)="loadThirdCat(firstSubCatId, category.id)" (click)="changeRoute(category.id)">
+      <li class="nav-item mr-4 category-div" *ngFor="let category of categories" (mouseenter)="loadThirdCat(category.subCategory[0].id, category.id)" (click)="changeRoute(category.id)">
         <a class="nav-link">{{category.name}}</a>
-        <div class="tool-tip-container">
+        <div class="tool-tip-container" [ngClass]="shouldDisplayToolTip ? '': 'd-none'" >
             <div class="category-div__tool-tip">
                 <ul class="list-group">
                   <li class="list-item" *ngFor="let subcat of category.subCategory" (mouseenter)="loadThirdCat(subcat.id, category.id)">{{ subcat.name }}</li>
@@ -40,7 +40,7 @@
       </li>
     </ul>
   </div>
-  <div class="side-bar" [ngClass]="shouldShow ? '': 'noWidth'" >
+  <div class="side-bar" id="side-bar" [ngClass]="!hideHamburger ? 'di-none': ''" >
     <ul>
       <li (click)="closeNav()">
         <i class="fa fa-times "></i>
@@ -50,7 +50,7 @@
           <li (click)="openBrandModal()"><a>
             <i class="fa fa-plus"></i>
             Create</a></li>
-          <li><a [routerLink]="['/brands','view']" routerLinkActive="active" >
+          <li><a [routerLink]="['/brands','view']" routerLinkActive="active" [queryParams]= "{subjectId: brandSubjectId}">
             <i class="fa fa-eye"></i>
             View</a></li>
           <li (click)="openBrandCategoryModal()"><a>
@@ -78,7 +78,7 @@
             <li (click)="openSubCategoryModal()"><a >
               <i class="fa fa-plus"></i>
               Create SubCategory</a></li>
-            <li><a [routerLink]="['/categories','view']" routerLinkActive="active">
+            <li><a [routerLink]="['/categories','view']" [queryParams]= "{subjectId: categorySubjectId}" routerLinkActive="active">
               <i class="fa fa-eye"></i>
               View</a></li>
         </ul>
@@ -89,7 +89,7 @@
           <li (click)="openMerchantModal()"><a>
             <i class="fa fa-plus"></i>
             Create</a></li>
-          <li><a [routerLink]="['/merchants','view']" routerLinkActive="active">
+          <li><a [routerLink]="['/merchants','view']" [queryParams]= "{subjectId: merchantSubjectId}" routerLinkActive="active">
             <i class="fa fa-eye"></i>
             View</a></li>
         </ul>
@@ -100,7 +100,7 @@
           <li (click)="openStoreModal()"><a>
             <i class="fa fa-plus"></i>
             Create</a></li>
-          <li><a [routerLink]="['/stores','view']" routerLinkActive="active">
+          <li><a [routerLink]="['/stores','view']" [queryParams]= "{subjectId: storeSubjectId}" routerLinkActive="active">
             <i class="fa fa-eye"></i>
             View</a></li>
         </ul>

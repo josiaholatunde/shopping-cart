@@ -58,7 +58,6 @@ nav a, div ul li a {
 }
 
 .side-bar {
-  height: 83vh;
   width: 25%;
   position: fixed;
   top: 8%;
@@ -66,9 +65,9 @@ nav a, div ul li a {
   z-index: 1;
   overflow-x: hidden;
   overflow-y: hidden;
-  transition: all .3s;
   background: #eee;
   padding: 2rem 1rem;
+  transition: all 10s ease-out;
 
 }
 .side-bar > ul {
@@ -211,5 +210,8 @@ ul {
 
     }
 
+  }
+  d-none {
+    display: none;
   }
 

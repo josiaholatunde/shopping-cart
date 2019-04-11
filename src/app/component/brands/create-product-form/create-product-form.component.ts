@@ -36,6 +36,8 @@ export class CreateProductFormComponent implements OnInit {
   productId: number;
   productCode: any;
   prodFeatures: Feature[];
+  features: Feature[];
+  categoryId: number;
 
 
   constructor(private fb: FormBuilder, private modalService: BsModalService, private productService: ProductService,
@@ -53,31 +55,34 @@ export class CreateProductFormComponent implements OnInit {
             const {name, categoryId, price, brandId, imgUrl, storeId, categoryName, merchantName, merchantId, quantityAvailable,
               pickUpAvailable, id, features }
              = product;
-             this.productId = id;
-             this.productCode = param.params['code'];
-              this.prodFeatures = features;
-             forkJoin(this.merchantService.getMerchants(),
-             this.categoryService.getCategories(),
-             this.storeService.getStores(),
-             this.brandService.getBrands(this.productFormgroup.value.categoryId))
-            .subscribe(([res1, res2, res3, res4]) => {
-              this.merchants = res1;
-              this.categories = res2;
-              this.stores = res3;
-              this.brands = res4;
+            this.productId = id;
+            this.categoryId = categoryId;
+            this.productCode = param.params['code'];
+            this.prodFeatures = features;
+
+            this.resetDynamicForm();
+             forkJoin(
+               this.merchantService.getMerchants(),
+               this.categoryService.getCategories(),
+               this.storeService.getStores(),
+               this.brandService.getBrands(this.productFormgroup.value.categoryId
+                )).subscribe(([res1, res2, res3, res4]) => {
+                    this.merchants = res1;
+                    this.categories = res2;
+                    this.stores = res3;
+                    this.brands = res4;
             });
             const newFeatures = [];
+            console.log('feat', features);
             for (let index = 0; index < features.length; index++) {
               const featuresO = {
                 key: features[index].key,
                 value: features[index].value
               };
               newFeatures.push(featuresO);
-              if (index !== 0) {
                 (this.productFormgroup.controls['features'] as FormArray).push(this.createItem());
-              }
             }
-
+            this.imagePreview = imgUrl;
             this.productFormgroup.setValue({
               name,
               categoryId,
@@ -88,7 +93,7 @@ export class CreateProductFormComponent implements OnInit {
               quantityAvailable,
               pickUpAvailable,
               image: imgUrl,
-              features: newFeatures
+              features: [...newFeatures]
             });
             this.productFormgroup.updateValueAndValidity();
           });
@@ -106,6 +111,13 @@ export class CreateProductFormComponent implements OnInit {
       });
       this.openModal(this.templateProduct);
     });
+  }
+
+  resetDynamicForm() {
+    const control = <FormArray>this.productFormgroup.controls['features'];
+    for (let index = control.length - 1; index >= 0; index--) {
+      control.removeAt(index);
+    }
   }
 
   loadBrands() {
@@ -150,6 +162,8 @@ export class CreateProductFormComponent implements OnInit {
       });
     }
     this.modalRef.hide();
+    this.resetDynamicForm();
+    this.router.navigate(['products'], { queryParams: { categoryId: this.categoryId } });
   }
 
   showFeatures() {

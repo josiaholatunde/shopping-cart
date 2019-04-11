@@ -43,6 +43,9 @@ export class ProductService {
   getProductById(productCode: string): Observable<Product> {
     return this.http.get<Product>(`${this.baseUrl}/${productCode}`).pipe();
   }
+  deleteProductById(productCode: string): Observable<Product> {
+    return this.http.delete<Product>(`${this.baseUrl}/${productCode}`).pipe();
+  }
   addToCart(item: Product ) {
     this.cartItems.push(item);
   }

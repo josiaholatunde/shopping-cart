@@ -1,0 +1,33 @@
+<div class="flex-container">
+    <div class="sub-container">
+      <form #registerForm="ngForm" (ngSubmit)="registerUser()">
+        <div class="header">
+          <h3>Register Form</h3>
+        </div>
+        <div class="form-group">
+          <input type="email" class="form-input" #userNameControl="ngModel" name="username" [(ngModel)]="userToLoginDto.username"
+          required placeholder="Enter your Username or Email">
+          <span class="text-danger" *ngIf="userNameControl.invalid && userNameControl.touched">Username field is required</span>
+        </div>
+        <div class="form-group">
+          <input type="password" class="form-input" #passwordControl="ngModel" name="password" [(ngModel)]="userToLoginDto.password"
+          required placeholder="Enter your Password">
+          <span class="text-danger" *ngIf="passwordControl.invalid && passwordControl.touched">Password field is required</span>
+        </div>
+        <div class="form-group login">
+          <button class="btn btn-md btn-danger login-btn" [disabled]="registerForm.invalid">
+            Register
+          </button>
+        </div>
+        <div class="form-group social">
+          <h5>Social Media</h5>
+          <div class="social-icons">
+            <div>Facebook</div>
+            <div>Google</div>
+            <div>Twitter</div>
+            <div>LinkedIn</div>
+          </div>
+        </div>
+      </form>
+    </div>
+</div>

@@ -27,8 +27,13 @@ export class ProductService {
   productsObservable() {
     return this.productsOnClient.asObservable();
   }
-  getProducts(categoryId: number, brandCodes?: string, price?: string): Observable<Product[]> {
+  getProducts(currentPage: number, pageSize: number, categoryId: number, brandCodes?: string, price?: string)
+  : Observable<{count: string,products: Product[]}> {
     let params = new HttpParams();
+    if (pageSize && currentPage) {
+      params = params.append('pageSize', pageSize.toString());
+      params = params.append('currentPage', currentPage.toString());
+    }
     if (categoryId) {
       params = params.append('categoryId', categoryId.toString());
     }
@@ -38,13 +43,55 @@ export class ProductService {
     if (brandCodes) {
       params = params.append('brandIds', brandCodes);
     }
-    return this.http.get<Product[]>(this.baseUrl, { observe: 'body', params}).pipe();
+    return this.http.get<Product[]>(this.baseUrl, { observe: 'response', params}).pipe(
+      map(res => {
+        if (res.headers.get('Pagination')) {
+          return {
+            count: res.headers.get('Pagination'),
+            products: res.body
+          };
+        }
+      })
+    );
+  }
+  getLatestProducts(currentPage: number, pageSize: number, categoryId: number, brandCodes?: string, price?: string)
+  : Observable<{count: string,products: Product[]}> {
+    let params = new HttpParams();
+    if (pageSize && currentPage) {
+      params = params.append('pageSize', pageSize.toString());
+      params = params.append('currentPage', currentPage.toString());
+    }
+    if (categoryId) {
+      params = params.append('categoryId', categoryId.toString());
+    }
+    if (price) {
+      params = params.append('price', price);
+    }
+    if (brandCodes) {
+      params = params.append('brandIds', brandCodes);
+    }
+    return this.http.get<Product[]>(`${this.baseUrl}/latest`, { observe: 'response', params}).pipe(
+      map(res => {
+        if (res.headers.get('Pagination')) {
+          return {
+            count: res.headers.get('Pagination'),
+            products: res.body
+          };
+        }
+      })
+    );
   }
   getProductById(productCode: string): Observable<Product> {
     return this.http.get<Product>(`${this.baseUrl}/${productCode}`).pipe();
   }
   deleteProductById(productCode: string): Observable<Product> {
-    return this.http.delete<Product>(`${this.baseUrl}/${productCode}`).pipe();
+    return this.http.delete<Product>(`${this.baseUrl}/${productCode}`).pipe(
+      map(res => {
+        const productsLeft =this.productsOnClient.getValue().filter(p => p.code === productCode);
+        this.updateProducts([...productsLeft]);
+        return res;
+      })
+    );
   }
   addToCart(item: Product ) {
     this.cartItems.push(item);

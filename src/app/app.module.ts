@@ -4,6 +4,7 @@ import { NgModule } from '@angular/core';
 import {ButtonModule} from 'primeng/button';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
+import { PaginationModule } from 'ngx-bootstrap/pagination';
 
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -32,6 +33,10 @@ import { CreateStoreFormComponent } from './component/brands/create-store-form/c
 import { AssignBrandCategoryFormComponent } from './component/assign-brand-category-form/assign-brand-category-form.component';
 import { SubCategoryFormComponent } from './component/sub-category-form/sub-category-form.component';
 import { ViewSubjectComponent } from './component/view-subject/view-subject.component';
+import { LoginComponent } from './component/login/login.component';
+import { RegisterComponent } from './component/register/register.component';
+import { ErrorInterceptors } from './services/error-interceptor.service';
+import { HomeComponent } from './component/home/home.component';
 
 @NgModule({
   declarations: [
@@ -52,7 +57,10 @@ import { ViewSubjectComponent } from './component/view-subject/view-subject.comp
     CreateStoreFormComponent,
     AssignBrandCategoryFormComponent,
     SubCategoryFormComponent,
-    ViewSubjectComponent
+    ViewSubjectComponent,
+    LoginComponent,
+    RegisterComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
@@ -63,6 +71,7 @@ import { ViewSubjectComponent } from './component/view-subject/view-subject.comp
     BrowserAnimationsModule,
     ReactiveFormsModule,
     HttpClientModule,
+    PaginationModule.forRoot(),
     ModalModule.forRoot()
 
 
@@ -72,7 +81,8 @@ import { ViewSubjectComponent } from './component/view-subject/view-subject.comp
     CategoryService,
     AlertifyService,
     MerchantService,
-    ProductService
+    ProductService,
+    ErrorInterceptors
   ],
   bootstrap: [AppComponent]
 })

@@ -11,6 +11,7 @@ import { Router } from '@angular/router';
 import { CategoryService } from 'src/app/services/category.service';
 import { SubCategory } from 'src/app/models/SubCategory';
 import { Subject } from 'src/app/models/Subject';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-navbar-detail',
@@ -41,15 +42,37 @@ export class NavbarDetailComponent implements OnInit {
   categorySubjectId = Subject.Category;
   subCategorySubjectId = Subject.SubCategory;
   shouldDisplayToolTip = true;
+  isUserLoggedIn = false;
+  isUserAdmin = false;
+  userName: any;
 
 
 
   constructor(private modalService: BsModalService, private brandService: BrandsService, private route: Router,
-    private categoryService: CategoryService,
+    private categoryService: CategoryService, private authService: AuthService,
     private alertify: AlertifyService) { }
 
   ngOnInit() {
     this.firstSubCatId = 1;
+    this.isUserLoggedIn = this.authService.isUserLoggedIn();
+    if (this.authService.isUserAdmin()) {
+      this.isUserLoggedIn = true;
+      this.isUserAdmin = true;
+      this.getUser();
+    }
+    this.authService.userLoggedInObservable().subscribe(status => {
+      this.isUserLoggedIn = status;
+      if (this.authService.isUserAdmin()) {
+        this.isUserAdmin = true;
+      }
+      if (this.isUserLoggedIn) {
+        this.getUser();
+      }
+    });
+  }
+  getUser() {
+    const user = this.authService.getLoggedInUser();
+    this.userName = user.username;
   }
 
   closeNav() {
@@ -97,6 +120,9 @@ export class NavbarDetailComponent implements OnInit {
     this.categoryService.getThirdSubCategories(subCatId, catId).subscribe(res => {
       this.thirdCategory = res;
     });
+  }
+  logOut() {
+   this.authService.logOut();
   }
 
 }

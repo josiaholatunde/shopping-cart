@@ -6,6 +6,7 @@ import { ProductService } from 'src/app/services/product.service';
 import { Router } from '@angular/router';
 import { BrandsService } from 'src/app/services/brand.service';
 import { AlertifyService } from 'src/app/services/alertify.service';
+import { AuthService } from 'src/app/services/auth.service';
 
 
 @Component({
@@ -25,9 +26,10 @@ export class ProductComponent implements OnInit {
   user = {
     isAdmin: true
   };
+  isLoggedIn: boolean;
 
   constructor(private productService: ProductService, private router: Router, private alertify: AlertifyService,
-    private brandService:  BrandsService) {
+    private brandService:  BrandsService, private authService: AuthService) {
     this.productQty = [];
     this.counter = 0;
    }
@@ -37,6 +39,18 @@ export class ProductComponent implements OnInit {
         this.productQty[i] = i;
       }
       this.userQty = this.product.quantityAvailable;
+      if (this.authService.isUserAdmin()) {
+        this.userIsAdmin = true;
+        this.isLoggedIn = true;
+      }
+      this.authService.userLoggedInObservable().subscribe(status => {
+        this.isLoggedIn = status;
+        if (status) {
+          if (this.authService.isUserAdmin()) {
+            this.userIsAdmin = true;
+          }
+        }
+      });
       // get productNameWidth
   }
   addToCart() {
@@ -58,7 +72,8 @@ export class ProductComponent implements OnInit {
     this.alertify.confirm('Are you sure you want to delete this Poduct? ', () => {
       this.productService.deleteProductById(code).subscribe(() => {
         this.alertify.success('Successfully deleted Product');
-      }, err => this.alertify.error(err.error), () => {
+      }, err => this.alertify.error(err.error),
+      () => {
         this.router.navigate(['products'], { queryParams: { categoryId: this.product.categoryId } });
       });
     });

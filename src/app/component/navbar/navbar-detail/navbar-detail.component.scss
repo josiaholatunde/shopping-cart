@@ -1,4 +1,4 @@
-nav a, div ul li a {
+/* nav a, div ul li a {
   color: white;
 }
 .nav-link {
@@ -27,7 +27,6 @@ nav a, div ul li a {
   &:hover .tool-tip-container, &:hover .tool-tip-container {
     visibility: visible;
   }
-
 }
 .nav-item a {
   width: 100%;
@@ -45,22 +44,30 @@ nav a, div ul li a {
   color: black !important;
   text-align: center;
 }
-
+.flex-right {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin-right: 1.5rem;
+  padding: 0 .4rem;
+}
+*/
 .hamburger {
   flex: 1;
   display: flex;
   justify-content: flex-end;
   align-items: center;
-  position: absolute;
-  right: 2%;
-  top: 23%;
+
   cursor: pointer;
+}
+i {
+  color: #fff;
 }
 
 .side-bar {
   width: 25%;
   position: fixed;
-  top: 8%;
+  top: 9.8%;
   right: 0;
   z-index: 1;
   overflow-x: hidden;
@@ -99,8 +106,15 @@ ul {
 .di-none {
   display: none;
 }
+ul li {
+  color: black;
+}
 .sub-nav-item ul li a{
   padding-left: .7rem;
+  color: black;
+}
+.side-bar i {
+  color: black;
 }
 
 // Tool Tip
@@ -123,6 +137,7 @@ ul {
     display: flex;
     flex-direction: column;
     margin-top: 1rem;
+    padding: 1.3rem;
     text-align: center;
     background: white;
     box-shadow: 0px -1px 1px #eee;
@@ -131,9 +146,12 @@ ul {
       list-style: none;
       .list-item {
         text-align: left;
-        padding: .7rem;
+        padding: 2rem;
         &:hover {
           background: #F2F3F5;
+        }
+        &:not(:first-child) {
+          margin-top: 1.3rem;
         }
       }
 
@@ -146,6 +164,7 @@ ul {
     display: flex;
     flex-direction: column;
     margin-top: 1rem;
+    padding: 1.3rem;
     text-align: center;
     background: white;
     box-shadow: 0px -1px 1px #eee;
@@ -154,9 +173,12 @@ ul {
       list-style: none;
       .list-item {
         text-align: left;
-        padding: .7rem;
+        padding: 2rem;
         &:hover {
           background: #F2F3F5;
+        }
+        &:not(:first-child) {
+          margin-top: 1.3rem;
         }
       }
 
@@ -186,32 +208,77 @@ ul {
     display: none;
   }
 
-  &__tool-tip {
 
-   /*  visibility: hidden;
-    flex: 1;
-    width: 50%;
-    display: flex;
-    flex-direction: column;
-    margin-top: 1rem;
-    text-align: center;
-    background: white;
-    box-shadow: 0px -1px 1px #eee;
-
-    .list-group {
-      list-style: none;
-      .list-item {
-        text-align: left;
-        padding: .7rem;
-        &:hover {
-          background: #F2F3F5;
-        }
-      } */
-
-    }
 
   }
   d-none {
     display: none;
   }
+
+// Nav Flex
+
+#header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #007bff;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  padding: 1rem;
+  ul {
+    list-style: none;
+    li {
+      padding: .25rem;
+    }
+  }
+
+  .nav-item a {
+    text-decoration: none;
+    color: #fff;
+    margin: 0 0.25rem;
+  }
+  .nav-center,.nav-right,.header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 0;
+  }
+  .nav-center {
+    flex: 2;
+  }
+}
+
+.nav-link {
+  font-size: .8rem;
+}
+.navbar-brand {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+}
+.nav-item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  &:hover .tool-tip-container, &:hover .tool-tip-container {
+    visibility: visible;
+  }
+
+  &:hover i {
+    color: black;
+  }
+  &:hover a{
+    color: black !important;
+    text-align: center;
+  }
+}
+.nav-center .nav-item:hover, .nav-right .nav-item:hover:not(:last-child) {
+  background: #fff;
+  border-radius: .3rem;
+}
+.hamburger:hover {
+  color: #fff;
+}
 

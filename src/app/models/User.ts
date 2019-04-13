@@ -7,5 +7,8 @@ export class User extends Person {
     super(name);
     this.itemsBought = [];
   }
-
+}
+export enum UserRole {
+  User,
+  Admin
 }

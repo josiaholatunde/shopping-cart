@@ -1,4 +1,5 @@
 /* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:400,600');
 @import "../node_modules/alertifyjs/build/css/themes/bootstrap.min.css";
 @import "../node_modules/alertifyjs/build/css/alertify.min.css";
 
@@ -12,6 +13,11 @@
 *,
 *::before, *::after {
   box-sizing: inherit;
+  font-family: inherit;
+
+}
+.body {
+  font-family: 'Open Sans', sans-serif;
 }
 
 

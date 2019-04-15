@@ -11,11 +11,19 @@
   width: 100%;
   flex: 1;
   background: #eee;
+  @media only screen and (max-width: 46rem) {
+    display: flex;
+    flex-direction: column;
+  }
 }
 
 .side-nav {
   flex: 0 0 15%;
   padding: 1.5rem;
+  @media only screen and (max-width: 46rem) {
+    flex: 0 0 100%;
+  }
+
 
 }
 .go-btn {
@@ -31,7 +39,6 @@
 }
 .card-container {
   height: 100%;
-  width: 100%;
   display: flex;
   justify-content: space-between;
   padding: 1rem;
@@ -42,6 +49,16 @@
   justify-items: center;
   & > *:not(:last-child) {
     margin-right: 2rem;
+    @media only screen and (max-width: 26rem) {
+     margin-right: 0;
+    }
+  }
+  @media only screen and (max-width: 26rem) {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 0;
+    justify-items: auto;
   }
 }
 .flex-center {
@@ -54,11 +71,21 @@
 }
 .browse-price {
   margin-top: .4rem;
+
 }
 .browse-price .heading {
   // padding: .3rem;
   font-weight: bold;
 
+}
+.flex-radio-group {
+  @media only screen and (max-width: 46rem) {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  @media only screen and (max-width: 26rem) {
+    padding-left: 0;
+  }
 }
 .radioo {
   height: .8rem;
@@ -76,11 +103,21 @@
   display: flex;
   justify-content: flex-start;
   align-items: center;
+  margin-left: .3rem;
+  @media only screen and (max-width: 26rem) {
+    margin-left: 0;
+  }
+
+}
+input[type=radio] {
+  margin-left: .4rem;
+
 }
 label {
   margin-bottom: 0 !important;
   margin-left: .3rem;
   cursor: pointer;
+
 }
 .custom-price {
   display: flex;
@@ -92,6 +129,12 @@ label {
   height: 1.8rem;
   margin-right: .5rem;
   border: 1px solid black;
+  @media only screen and (max-width: 46rem) {
+    width: 41%;
+  }
+  @media only screen and (max-width: 46rem) {
+    width: 37%;
+  }
 }
 .search-brand {
   display: flex;
@@ -113,12 +156,16 @@ label {
 }
 
 .message {
-  margin-top: -30%;
+  margin-top: 0%;
   align-self: center;
   display: flex;
   justify-content: center;
   align-content: center;
   flex: 1;
+  @media only screen and (max-width: 46rem) {
+    margin-top: 0%;
+    font-size: 2rem;
+  }
 }
 .brandName {
   cursor: pointer;

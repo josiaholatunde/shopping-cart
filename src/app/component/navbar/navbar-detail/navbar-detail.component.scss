@@ -75,6 +75,13 @@ i {
   background: #eee;
   padding: 2rem 1rem;
   transition: all 10s ease-out;
+  @media only screen and (max-width: 40.5rem) {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    overflow: hidden;
+  }
 
 }
 .side-bar > ul {
@@ -129,6 +136,9 @@ ul li {
     top: .2rem;
     left: 0;
     display: flex;
+    @media only screen and (max-width: 40.5rem) {
+      display: none;
+    }
   }
 
   &__tool-tip {
@@ -168,6 +178,9 @@ ul li {
     text-align: center;
     background: white;
     box-shadow: 0px -1px 1px #eee;
+    @media only screen and (max-width: 40.5rem) {
+      display: none;
+    }
 
     .list-group {
       list-style: none;
@@ -226,6 +239,14 @@ ul li {
   top: 0;
   z-index: 1;
   padding: 1rem;
+  @media only screen and (max-width: 48rem) {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    padding: .3rem;
+    width: 100%;
+    box-sizing: border-box;
+  }
   ul {
     list-style: none;
     li {
@@ -233,20 +254,71 @@ ul li {
     }
   }
 
+  .nav-right {
+    @media only screen and (max-width: 48rem) {
+      display: none;
+    }
+  }
+
+  .main-hamburger {
+    display: none;
+    @media only screen and (max-width: 48rem) {
+      display: inline-block;
+      position: absolute;
+      top: 2%;
+      left: 5%;
+      font-size: 2rem;
+      order: -1;
+    }
+  }
+
+  .nav-item {
+    @media only screen and (max-width: 36rem) {
+      margin-top: .6rem;
+    }
+  }
+
   .nav-item a {
     text-decoration: none;
     color: #fff;
     margin: 0 0.25rem;
+    @media only screen and (max-width: 36rem) {
+      margin: 0 0.05rem;
+    }
   }
   .nav-center,.nav-right,.header {
     display: flex;
     align-items: center;
     margin-bottom: 0;
+
   }
   .nav-center {
     flex: 2;
+    @media only screen and (max-width: 40.5rem) {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      overflow: hidden;
+    }
+
   }
 }
+.nav-right {
+  @media only screen and (max-width: 40.5rem) {
+    width: 100%;
+    display: flex;
+    align-items: flex-start;
+    overflow: hidden;
+  }
+}
+.nav-center li {
+  @media only screen and (max-width: 40.5rem) {
+    display: flex;
+    justify-content: flex-start;
+  }
+}
+
 
 .nav-link {
   font-size: .8rem;
@@ -277,6 +349,9 @@ ul li {
 .nav-center .nav-item:hover, .nav-right .nav-item:hover:not(:last-child) {
   background: #fff;
   border-radius: .3rem;
+  @media only screen and (max-width: 36rem) {
+    padding: .3rem;
+  }
 }
 .hamburger:hover {
   color: #fff;

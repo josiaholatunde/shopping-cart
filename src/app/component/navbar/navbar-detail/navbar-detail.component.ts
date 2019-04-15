@@ -45,6 +45,7 @@ export class NavbarDetailComponent implements OnInit {
   isUserLoggedIn = false;
   isUserAdmin = false;
   userName: any;
+  shouldCollapse: boolean;
 
 
 
@@ -124,5 +125,8 @@ export class NavbarDetailComponent implements OnInit {
   logOut() {
    this.authService.logOut();
   }
+  collapse() {
+    this.shouldCollapse = !this.shouldCollapse;
 
+  }
 }

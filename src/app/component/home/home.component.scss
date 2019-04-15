@@ -31,6 +31,10 @@
 }
 .text-container h3 {
   font-size: 4rem;
+  text-align: center;
+  @media only screen and (max-width: 27rem) {
+    font-size: 2.5rem;
+  }
 }
 .text-container p {
   width: 50%;
@@ -62,6 +66,9 @@
 .category {
   height: 27rem;
   width: 100%;
+  @media only screen and (max-width: 40.5rem) {
+    height: 36rem;
+  }
 }
 .con {
   width: 100%;
@@ -70,16 +77,51 @@
   justify-content: space-between;
   align-items: center;
   height: 100%;
+  @media only screen and (max-width: 40.5rem) {
+    display: flex;
+    flex-direction: column;
+  }
+
+
 }
+
+.con-1 {
+  width: 100%;
+  display: flex;
+  margin: 2rem 0;
+  justify-content: space-between;
+  align-items: center;
+  height: 100%;
+  @media only screen and (max-width: 40.5rem) {
+    display: flex;
+    flex-direction: column;
+  }
+
+
+}
+
 .box-1 {
   background: url('../../../assets/img/shop6.jpeg') center center/cover;
   height: 100%;
   width: 50%;
   margin-left: .5rem;
   position: relative;
+  @media only screen and (max-width: 40.5rem) {
+    width: 100%;
+    margin-bottom: 2rem
+  }
 }
 .box {
   width: 100%;
+  height: 12rem;
+  @media only screen and (max-width: 40.5rem) {
+    height: 10rem;
+  }
+}
+.box:first-child {
+  @media only screen and (max-width: 40.5rem) {
+    margin-top: -2rem;
+  }
 }
 
 .box-2 {
@@ -88,6 +130,9 @@
   width: 50%;
   margin-left: .5rem;
   position: relative;
+  @media only screen and (max-width: 40.5rem) {
+    width: 100%;
+  }
 }
 .over-lay2 {
   position: absolute;
@@ -107,20 +152,29 @@
   h1 {
     font-size: 4rem;
     margin-bottom: .7rem;
+    text-align: center;
+    @media only screen and (max-width: 46rem) {
+      font-size: 2.7rem;
+    }
   }
 }
 
 .row-1 {
-  height: 18rem;
+ //  min-height: 18rem;
   background: #fff;
+  @media only screen and (max-width: 46rem) {
+    // min-height: 22rem;
+  }
+
 }
 .my-con {
   padding: 0 1rem;
-  height: 100%;
+  height: 1;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
+  height: 100%;
 
 }
 .header {
@@ -156,6 +210,11 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  @media only screen and (max-width: 46rem) {
+    display: flex;
+    flex-direction: column;
+    margin-top: 2rem;
+  }
 }
 .text {
   display: flex;

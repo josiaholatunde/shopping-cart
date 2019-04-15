@@ -5,25 +5,27 @@
   <div class="side-nav">
     <div class="browse-price">
       <div class="heading">Browse Price</div>
-      <div class="flex-radio">
-        <input type="radio" name="price" (change)="filterPrice()" id="price1" [(ngModel)]="searchParams.price" value="0-1999">
-         <label for="price1">Under 2000</label>
-      </div>
-      <div class="flex-radio">
-        <input type="radio" name="price" (change)="filterPrice()" id="price2"  [(ngModel)]="searchParams.price" value="2000-5000">
-        <label for="price2">2000 -5000</label>
-      </div>
-      <div class="flex-radio">
-        <input type="radio" name="price" (change)="filterPrice()" id="price3"  [(ngModel)]="searchParams.price" value="5001-10000">
-        <label for="price3">5001 - 10000</label>
-      </div>
-      <div class="flex-radio">
-        <input type="radio" name="price" (change)="filterPrice()" id="price4"  [(ngModel)]="searchParams.price" value="10001-20000">
-         <label for="price4">10001-20000</label>
-      </div>
-      <div class="flex-radio">
-        <input type="radio" name="price" (change)="filterPrice()" id="price5"  [(ngModel)]="searchParams.price" value="20001-max">
-         <label for="price5"> > 20000</label>
+      <div class="flex-radio-group">
+        <div class="flex-radio">
+          <input type="radio" name="price" (change)="filterPrice()" id="price1" [(ngModel)]="searchParams.price" value="0-1999">
+           <label for="price1">Under 2000</label>
+        </div>
+        <div class="flex-radio">
+          <input type="radio" name="price" (change)="filterPrice()" id="price2"  [(ngModel)]="searchParams.price" value="2000-5000">
+          <label for="price2">2000 -5000</label>
+        </div>
+        <div class="flex-radio">
+          <input type="radio" name="price" (change)="filterPrice()" id="price3"  [(ngModel)]="searchParams.price" value="5001-10000">
+          <label for="price3">5001 - 10000</label>
+        </div>
+        <div class="flex-radio">
+          <input type="radio" name="price" (change)="filterPrice()" id="price4"  [(ngModel)]="searchParams.price" value="10001-20000">
+           <label for="price4">10001-20000</label>
+        </div>
+        <div class="flex-radio">
+          <input type="radio" name="price" (change)="filterPrice()" id="price5"  [(ngModel)]="searchParams.price" value="20001-max">
+           <label for="price5"> > 20000</label>
+        </div>
       </div>
     </div>
 <div class="browse-price">

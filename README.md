@@ -2,7 +2,7 @@
 A shopping/ E-Commerce App built with angular(Client side) and dotnet core 2.0(Web Api) for carrying out shopping transactions 
 and Role based authentication for carrying out responsibilities.
 
-EndPoints
+EndPoints<br/>
 Authentication/User Controller <br/>
 The app uses Jwt Token authentication for logged in users and so only authorized users can access allowed routes<br>
 <pre>

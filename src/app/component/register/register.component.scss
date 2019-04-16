@@ -11,6 +11,15 @@
   width: 32%;
   padding: 2rem 3rem;
   box-shadow: 1px 1px 3px black;
+  @media only screen and (max-width: 52rem) {
+    width: 52%;
+  }
+  @media only screen and (max-width: 40rem) {
+    width: 65%;
+  }
+  @media only screen and (max-width: 28rem) {
+    width: 85%;
+  }
 }
 form {
   width: 100%;

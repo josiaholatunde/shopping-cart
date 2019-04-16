@@ -19,6 +19,15 @@ input[type=radio]{
   display: flex;
   justify-content: space-between;
   background: #eee;
+  @media only screen and (max-width: 50rem) {
+    display: flex;
+    flex-direction: column;
+  }
+  @media only screen and (max-width: 50rem) {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 }
 .img-con, .content {
   flex: 1;
@@ -27,20 +36,54 @@ input[type=radio]{
   display: flex;
   justify-content: center;
   align-items: center;
+  @media only screen and (max-width: 31rem) {
+    width: 80%;
+  }
+  @media only screen and (max-width: 31rem) {
+    width: 60%;
+  }
+}
+.img-con img {
+
+  @media only screen and (max-width: 31rem) {
+    height: 100%;
+    width: 100%;
+  }
 }
 .content {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  @media only screen and (max-width: 52rem) {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    padding: 0 2.7rem;
+    margin: 2rem 2rem;
+  }
   .main-header {
     font-size: 2.1rem;
     width: 80%;
+    @media only screen and (max-width: 47rem) {
+      width: 100%;
+    }
+    @media only screen and (max-width: 40rem) {
+      font-size: 1.8rem;
+    }
+    @media only screen and (max-width: 31rem) {
+      font-size: 1.4rem;
+    }
   }
   .price {
     font-size: 1.7rem;
     font-weight: bold;
     border-top: 1px solid lightgrey;
     border-bottom: 1px solid lightgrey;
+  }
+  .product-code {
+    @media only screen and (max-width: 46rem) {
+      font-size: 1.5rem;
+    }
   }
   .quantity {
     display: flex;
@@ -155,6 +198,10 @@ input[type=radio]{
   justify-content: center;
   align-items: center;
   color: #33b27b;
+  @media only screen and (max-width: 46rem) {
+    height: 3rem;
+    width: 3rem;
+  }
 }
 
 
@@ -164,8 +211,12 @@ input[type=radio]{
   justify-content: flex-start;
   align-items: center;
   height: 5rem;
+
   & > * {
     margin-left: 1.5rem;
+   /*  @media only screen and (max-width: 46rem) {
+      margin-left: 0;
+    } */
   }
   .initial {
     height: 2.5rem;
@@ -182,7 +233,35 @@ input[type=radio]{
     font-weight: bold;
     font-size: 1.3rem;
     cursor: pointer;
+     @media only screen and (max-width: 46rem) {
+      font-size: 1rem;
+    }
+     @media only screen and (max-width: 40rem) {
+      font-size: .9rem;
+      margin-left: 1.5rem;
+    }
+     @media only screen and (max-width: 31rem) {
+      font-size: .8rem;
+      margin-left: 1.2rem;
+    }
+     @media only screen and (max-width: 31rem) {
+      font-size: .7rem;
+      margin-left: 1rem;
+    }
+     @media only screen and (max-width: 21rem) {
+      font-size: .6rem;
+      margin-left: .8rem;
+    }
+
   }
+  .item:nth-child(4) {
+    @media only screen and (max-width: 40rem) {
+      display: none;
+    }
+  }
+
+
+
 }
 .mt-1 {margin-top: 1rem;}
 .mt-2 {margin-top: 1rem;}

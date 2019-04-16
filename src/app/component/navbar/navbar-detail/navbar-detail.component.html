@@ -148,7 +148,7 @@
       </li>
       <li class="nav-item  category-div" *ngFor="let category of categories" (mouseenter)="loadThirdCat(category.subCategory[0].id, category.id)" (click)="changeRoute(category.id)">
           <a class="nav-link">{{category.name}}</a>
-          <div class="tool-tip-container" [ngClass]="shouldDisplayToolTip ? '': 'd-none'" >
+          <div class="tool-tip-container"  >
               <div class="category-div__tool-tip">
                   <ul class="list-group">
                     <li class="list-item" *ngFor="let subcat of category.subCategory" (mouseenter)="loadThirdCat(subcat.id, category.id)">{{ subcat.name }}</li>

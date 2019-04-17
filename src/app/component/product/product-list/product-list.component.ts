@@ -130,9 +130,20 @@ export class ProductListComponent implements OnInit {
     });
     str = str.slice(0, str.length - 1);
     if (this.productType === 'New Arrivals') {
-      this.getAllProducts();
+      this.productService.getLatestProducts(this.pageIndex, this.pageSize, this.categoryId, null, str).subscribe(res => {
+        this.productList = res.products;
+        this.totalItems = parseInt(res.count, 10);
+      });
+    }  else if (this.productType === 'Top Picks') {
+      this.productService.getLatestProducts(this.pageIndex, this.pageSize, this.categoryId, str, null).subscribe(res => {
+        this.productList = res.products;
+        this.totalItems = parseInt(res.count, 10);
+      });
     } else {
-      this.getProducts();
+      this.productService.getProducts(this.pageIndex, this.pageSize, this.categoryId, str, null).subscribe(res => {
+        this.productList = res.products;
+        this.totalItems = parseInt(res.count, 10);
+      });
     }
   }
   makeActive() {

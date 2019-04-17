@@ -130,7 +130,7 @@ export class ProductListComponent implements OnInit {
     });
     str = str.slice(0, str.length - 1);
     if (this.productType === 'New Arrivals') {
-      this.productService.getLatestProducts(this.pageIndex, this.pageSize, this.categoryId, null, str).subscribe(res => {
+      this.productService.getLatestProducts(this.pageIndex, this.pageSize, this.categoryId, str, null).subscribe(res => {
         this.productList = res.products;
         this.totalItems = parseInt(res.count, 10);
       });

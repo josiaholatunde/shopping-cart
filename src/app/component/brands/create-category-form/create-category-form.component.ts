@@ -24,7 +24,7 @@ export class CreateCategoryFormComponent implements OnInit {
   formMode = FormMode.create;
   subCategoryFromDb: SubCategory[];
   categoryId: number;
-
+  public formModeCreate = FormMode.create;
 
   constructor(private modalService: BsModalService, private brandService: BrandsService, private categoryService: CategoryService,
     private fb: FormBuilder, private route: ActivatedRoute,
@@ -121,7 +121,7 @@ export class CreateCategoryFormComponent implements OnInit {
         subCategory
       };
       this.categoryService.editCategory(categoryToEditDto).subscribe((res) => {
-        this.alertify.success('Successfully created brand');
+        this.alertify.success('Successfully created Category');
       }, err => this.alertify.error(err),
       () => {
         this.categoryFormGroup.reset();

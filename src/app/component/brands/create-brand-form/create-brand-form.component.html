@@ -1,6 +1,6 @@
 <ng-template #template>
     <div class="modal-header">
-      <h4 class="modal-title pull-left">Create Brand</h4>
+      <h4 class="modal-title pull-left">{{ formMode === formModeCreate ? 'Create': 'Edit' }} Brand</h4>
       <button type="button" class="close pull-right" aria-label="Close" (click)="closeModal()">
         <span aria-hidden="true">&times;</span>
       </button>
@@ -13,7 +13,8 @@
               <span class="text-danger" *ngIf="brandFormGroup.get('name').invalid && brandFormGroup.get('name').touched">Name field is required</span>
             </div>
             <div class="form-group">
-              <input type="submit" class="btn submit-btn btn-sm btn-danger" [disabled]="brandFormGroup.invalid" value="Create">
+              <input type="submit" class="btn submit-btn btn-sm btn-danger"
+              [disabled]="brandFormGroup.invalid" [value]="formMode === formModeCreate ? 'Create': 'Edit'">
             </div>
       </form>
     </div>

@@ -1,6 +1,6 @@
 <ng-template #templateStore>
     <div class="modal-header">
-      <h4 class="modal-title pull-left">Create Store</h4>
+      <h4 class="modal-title pull-left">{{ formMode === formModeCreate ? 'Create': 'Edit' }} Store</h4>
       <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
         <span aria-hidden="true">&times;</span>
       </button>
@@ -18,7 +18,7 @@
               <span class="text-danger" *ngIf="storeFormGroup.get('name').invalid && storeFormGroup.get('location').touched">Location field is required</span>
           </div>
             <div class="form-group">
-              <input type="submit" class="btn submit-btn btn-sm btn-danger" [disabled]="storeFormGroup.invalid" value="Create">
+              <input type="submit" class="btn submit-btn btn-sm btn-danger" [disabled]="storeFormGroup.invalid" [value]="formMode === formModeCreate ? 'Create': 'Edit'">
             </div>
       </form>
     </div>

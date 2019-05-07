@@ -24,6 +24,8 @@ export class CreateStoreFormComponent implements OnInit {
   storeFormGroup: FormGroup;
   formMode = FormMode.create;
   storeFromDb: Store;
+  public formModeCreate = FormMode.create;
+
 
 
   constructor(private modalService: BsModalService, private brandService: BrandsService, private router: Router,

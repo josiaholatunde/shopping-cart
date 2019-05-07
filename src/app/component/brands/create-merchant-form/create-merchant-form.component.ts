@@ -21,6 +21,7 @@ export class CreateMerchantFormComponent implements OnInit {
   @ViewChild('templateMerchant') templateMerchant: TemplateRef<any>;
   formMode = FormMode.create;
   merchantFromDb: Merchant;
+  public formModeCreate = FormMode.create;
 
 
   constructor(private modalService: BsModalService, private merchantService: MerchantService, private router: Router,

@@ -22,6 +22,7 @@ export class CreateBrandFormComponent implements OnInit {
   modalRef: BsModalRef;
   brandFormGroup: FormGroup;
   formMode = FormMode.create;
+  public formModeCreate = FormMode.create;
   brandFromDb: Brand;
 
 

@@ -94,7 +94,7 @@ export class SalesFormComponent implements OnInit {
       paymentReferenceId,
     };
       this.productService.createProduct(saleToCreateDto).subscribe(res => {
-        this.alertify.success('Successfully created Product');
+        this.alertify.success('Successfully created Sales');
       }, err => this.alertify.error(err),
       () => {
         this.salesFormgroup.reset();

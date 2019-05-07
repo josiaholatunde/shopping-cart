@@ -1,6 +1,6 @@
 <ng-template #templateProduct>
     <div class="modal-header">
-      <h4 class="modal-title pull-left">Create Product</h4>
+      <h4 class="modal-title pull-left">{{formMode === formModeCreate ? 'Create': 'Edit'}} Product</h4>
       <button type="button" class="close pull-right" aria-label="Close" (click)="closeModal()">
         <span aria-hidden="true">&times;</span>
       </button>
@@ -74,7 +74,8 @@
                         <span class="text-danger" *ngIf="productFormgroup.get('pickUpAvailable').invalid && productFormgroup.get('pickUpAvailable').touched">Pickup field is required</span>
                       </div>
                       <div class="form-group">
-                        <input type="submit" class="btn submit-btn btn-sm btn-danger" [disabled]="productFormgroup.invalid" value="Create">
+                        <input type="submit" class="btn submit-btn btn-sm btn-danger"
+                         [disabled]="productFormgroup.invalid" [value]="formMode === formModeCreate ? 'Create': 'Edit'">
                       </div>
             </div>
             <div class="tab-pane" id="tab2">

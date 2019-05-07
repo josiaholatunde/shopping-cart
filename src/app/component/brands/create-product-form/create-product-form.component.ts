@@ -38,6 +38,8 @@ export class CreateProductFormComponent implements OnInit {
   prodFeatures: Feature[];
   features: Feature[];
   categoryId: number;
+  public formModeCreate = FormMode.create;
+
 
 
   constructor(private fb: FormBuilder, private modalService: BsModalService, private productService: ProductService,

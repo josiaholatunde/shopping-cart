@@ -1,6 +1,6 @@
 <ng-template #templateMerchant>
     <div class="modal-header">
-      <h4 class="modal-title pull-left">Create Merchant</h4>
+      <h4 class="modal-title pull-left">{{formMode === formModeCreate ? 'Create': 'Edit'}} Merchant</h4>
       <button type="button" class="close pull-right" aria-label="Close" (click)="closeModal()">
         <span aria-hidden="true">&times;</span>
       </button>
@@ -13,7 +13,7 @@
               <span class="text-danger" *ngIf="merchantFormGroup.get('name').invalid && merchantFormGroup.get('name').touched">Name field is required</span>
             </div>
             <div class="form-group">
-              <input type="submit" class="btn submit-btn btn-sm btn-danger" [disabled]="merchantFormGroup.invalid" value="Create">
+              <input type="submit" class="btn submit-btn btn-sm btn-danger" [disabled]="merchantFormGroup.invalid" [value]="formMode === formModeCreate ? 'Create': 'Edit'">
             </div>
       </form>
     </div>

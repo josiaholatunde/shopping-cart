@@ -14,6 +14,14 @@ div a,div a:hover {
 }
 .card-con{
   padding-top: 1.3rem !important;
+  width: 100%;
+  @media only screen and (max-width: 33rem) {
+     display: flex;
+     align-items: center;
+     justify-content: center;
+     cursor: pointer;
+    }
+
 }
 .btn-con {
   margin-bottom: 1.2rem !important;
@@ -37,7 +45,13 @@ div a,div a:hover {
   }
 }
 .card {
+  width: 14rem;height: 28.2rem;
   box-shadow: 1px 1px 3px grey, -1px -1px 3px grey;
+  @media only screen and (max-width: 33rem) {
+  //  width: 60%;
+   width: 19rem;
+   height: 26rem;
+  }
 
 }
 .ellipsis {
@@ -50,6 +64,12 @@ div a,div a:hover {
   -webkit-box-orient: vertical;
   overflow: hidden;
   text-overflow: ellipsis;
+  @media only screen and (max-width: 33rem) {
+    //  width: 60%;
+     width: 18rem;
+     line-height: 1.5rem;
+     height: 2.8rem;
+    }
 }
 
 .card-text .small {
@@ -59,4 +79,13 @@ div a,div a:hover {
 .btn-con {
   height: 2rem;
   margin-top: .6rem;
+}
+.card-img-topo {
+  height: 16rem;
+  padding: .5rem;
+  @media only screen and (max-width: 33rem) {
+    padding: 0;
+    height: 70%;
+    margin-top: -1rem;
+  }
 }

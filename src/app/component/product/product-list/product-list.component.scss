@@ -42,6 +42,9 @@
   display: flex;
   justify-content: space-between;
   padding: 1rem;
+  @media only screen and (max-width: 36rem) {
+    padding: 0rem;
+  }
 }
 .flex-card {
   display: flex;
@@ -49,15 +52,14 @@
   justify-items: center;
   & > *:not(:last-child) {
     margin-right: 2rem;
-    @media only screen and (max-width: 26rem) {
+    @media only screen and (max-width: 33rem) {
      margin-right: 0;
     }
   }
-  @media only screen and (max-width: 26rem) {
+  @media only screen and (max-width: 36rem) {
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-left: 0;
     justify-items: auto;
   }
 }

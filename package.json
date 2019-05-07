@@ -23,6 +23,7 @@
     "@auth0/angular-jwt": "^2.1.0",
     "alertifyjs": "^1.11.2",
     "core-js": "^2.5.4",
+    "ng4-loading-spinner": "^1.2.3",
     "ngx-bootstrap": "^4.0.0",
     "primeicons": "^1.0.0",
     "primeng": "^6.1.7",

@@ -32,7 +32,6 @@ export class AuthService {
     return this.http.post<{user: User, token: string}>(`${this.baseUrl}/login`, userToLogin).pipe(
       map(res => {
         if (res.token) {
-          console.log('i ran man');
           localStorage.setItem('token', res.token);
           localStorage.setItem('user', JSON.stringify(res.user));
           this.userIsLoggedIn = true;

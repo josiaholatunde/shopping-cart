@@ -7,10 +7,12 @@ import { HttpClientModule } from '@angular/common/http';
 import { PaginationModule } from 'ngx-bootstrap/pagination';
 import { JwtModule } from '@auth0/angular-jwt';
 
+
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import {DialogModule} from 'primeng/dialog';
 import { AppComponent } from './app.component';
+import { Ng4LoadingSpinnerModule } from 'ng4-loading-spinner';
 import { ProductComponent } from './component/product/product.component';
 import { ProductListComponent } from './component/product/product-list/product-list.component';
 import { NavbarComponent } from './component/navbar/navbar.component';
@@ -19,6 +21,7 @@ import { AppRoutingModule } from './app-routing/app-routing.module';
 import { NotFoundComponent } from './component/not-found/not-found.component';
 import { ComponentComponent } from './component/component.component';
 import { ProductDetailComponent } from './component/product/product-detail/product-detail.component';
+
 import { ViewCartComponent } from './component/view-cart/view-cart.component';
 import { BrandsService } from './services/brand.service';
 import { ProductService } from './services/product.service';
@@ -37,6 +40,8 @@ import { LoginComponent } from './component/login/login.component';
 import { RegisterComponent } from './component/register/register.component';
 import { ErrorInterceptors } from './services/error-interceptor.service';
 import { HomeComponent } from './component/home/home.component';
+import { SalesFormComponent } from './component/sales-form/sales-form.component';
+import { ProductGuard } from './guards/products.guard';
 
 export function tokenGetter() {
   return localStorage.getItem('token');
@@ -64,7 +69,8 @@ export function tokenGetter() {
     ViewSubjectComponent,
     LoginComponent,
     RegisterComponent,
-    HomeComponent
+    HomeComponent,
+    SalesFormComponent
   ],
   imports: [
     BrowserModule,
@@ -75,6 +81,7 @@ export function tokenGetter() {
     BrowserAnimationsModule,
     ReactiveFormsModule,
     HttpClientModule,
+    Ng4LoadingSpinnerModule.forRoot(),
     PaginationModule.forRoot(),
     ModalModule.forRoot(),
     JwtModule.forRoot({
@@ -93,7 +100,8 @@ export function tokenGetter() {
     AlertifyService,
     MerchantService,
     ProductService,
-    ErrorInterceptors
+    ErrorInterceptors,
+    ProductGuard
   ],
   bootstrap: [AppComponent]
 })

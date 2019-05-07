@@ -85,7 +85,6 @@ export class SubCategoryFormComponent implements OnInit {
     };
 
     this.categoryService.createSubCategory(mainSubCategory).subscribe((res) => {
-      console.log(res);
       this.alertify.success('Successfully created brand');
     }, err => this.alertify.error(err),
     () => {

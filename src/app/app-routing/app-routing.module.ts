@@ -8,6 +8,7 @@ import { ViewSubjectComponent } from '../component/view-subject/view-subject.com
 import { LoginComponent } from '../component/login/login.component';
 import { RegisterComponent } from '../component/register/register.component';
 import { HomeComponent } from '../component/home/home.component';
+import { ProductGuard } from '../guards/products.guard';
 
 
 
@@ -19,8 +20,8 @@ const routes: Routes = [
   {path: 'products', component: ProductListComponent },
   {path: 'login', component: LoginComponent },
   {path: 'register', component: RegisterComponent },
-  {path: 'products/edit/:code', component: ProductListComponent },
-  {path: ':name/view', component: ViewSubjectComponent },
+  {path: 'products/edit/:code', component: ProductListComponent, canActivate: [ProductGuard] },
+  {path: ':name/view', component: ViewSubjectComponent, canActivate: [ProductGuard]},
   {path: 'products/:name/:id', component: ProductDetailComponent },
   {path: '', redirectTo: 'home', pathMatch: 'full' },
   {path: '**', component: NotFoundComponent },

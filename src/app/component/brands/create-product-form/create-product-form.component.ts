@@ -73,7 +73,6 @@ export class CreateProductFormComponent implements OnInit {
                     this.brands = res4;
             });
             const newFeatures = [];
-            console.log('feat', features);
             for (let index = 0; index < features.length; index++) {
               const featuresO = {
                 key: features[index].key,
@@ -167,7 +166,6 @@ export class CreateProductFormComponent implements OnInit {
   }
 
   showFeatures() {
-    console.log(this.productFormgroup.value);
   }
 
   submitProductForm() {

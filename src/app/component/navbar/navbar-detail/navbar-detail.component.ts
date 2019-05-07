@@ -12,6 +12,7 @@ import { CategoryService } from 'src/app/services/category.service';
 import { SubCategory } from 'src/app/models/SubCategory';
 import { Subject } from 'src/app/models/Subject';
 import { AuthService } from 'src/app/services/auth.service';
+import { StoreService } from 'src/app/services/store.service';
 
 @Component({
   selector: 'app-navbar-detail',
@@ -45,7 +46,7 @@ export class NavbarDetailComponent implements OnInit {
   isUserLoggedIn = false;
   isUserAdmin = false;
   userName: any;
-  shouldCollapse: boolean;
+  shouldCollapse = false;
 
 
 

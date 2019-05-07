@@ -2,6 +2,7 @@ import { OnInit } from '@angular/core';
 import { Component } from '@angular/core';
 import { CategoryService } from './services/category.service';
 import { Category } from './models/category';
+import { StoreService } from './services/store.service';
 
 @Component({
   selector: 'app-root',
@@ -11,17 +12,17 @@ import { Category } from './models/category';
 export class AppComponent implements OnInit {
   title = 'fashionStudio';
   categories: Category[];
-  constructor(private categoryService: CategoryService){}
+  constructor(private categoryService: CategoryService, private store: StoreService) {}
 
   ngOnInit(): void {
     this.categoryService.getCategories().subscribe(res => {
       this.categories = res;
     });
-   /*  const body = document.getElementsByTagName('body')[0];
-    body.addEventListener('click', () => {
-      const sideBar = document.getElementById('side-bar');
-      sideBar.classList.add('d-non');
-    }); */
+   /*  if (window.innerWidth > 768) {
+     document.getElementById('nav-cen').classList.remove('d-none');
+    } else {
+      document.getElementById('nav-cen').classList.add('d-none');
+    } */
   }
 
 }

@@ -43,8 +43,8 @@ export class CreateMerchantFormComponent implements OnInit {
         } else {
           this.formMode = FormMode.create;
         }
-        this.openModal(this.templateMerchant);
       });
+      this.openModal(this.templateMerchant);
     });
 
   }

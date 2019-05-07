@@ -7,6 +7,7 @@ import { AlertifyService } from 'src/app/services/alertify.service';
 import { Category } from 'src/app/models/category';
 import { CategoryService } from 'src/app/services/category.service';
 import { FormMode } from 'src/app/models/FormMode';
+import { SubCategory } from 'src/app/models/SubCategory';
 
 @Component({
   selector: 'app-create-category-form',
@@ -21,11 +22,11 @@ export class CreateCategoryFormComponent implements OnInit {
   modalRef: BsModalRef;
   categoryFormGroup: FormGroup;
   formMode = FormMode.create;
-  subCategoryFromDb: import("c:/Users/User/Documents/ShoppingCart/ShoppingUI/shopping-cart/src/app/models/SubCategory").SubCategory[];
+  subCategoryFromDb: SubCategory[];
   categoryId: number;
 
 
-  constructor(private modalService: BsModalService,private brandService: BrandsService, private categoryService: CategoryService,
+  constructor(private modalService: BsModalService, private brandService: BrandsService, private categoryService: CategoryService,
     private fb: FormBuilder, private route: ActivatedRoute,
     private alertify: AlertifyService) { }
 

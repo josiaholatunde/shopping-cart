@@ -1,8 +1,9 @@
+
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { Merchant } from '../models/merchant';
-import { Observable } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 import { Store } from '../models/store';
 
 @Injectable({
@@ -11,8 +12,16 @@ import { Store } from '../models/store';
 export class StoreService {
 
   baseUrl = `${environment.apiUrl}/stores`;
+  private shouldCollapseNav = new Subject<boolean>();
 
   constructor(private http: HttpClient) { }
+
+  updateNav(val: boolean) {
+    this.shouldCollapseNav.next(val);
+  }
+  navStatusListener() {
+    return this.shouldCollapseNav.asObservable();
+  }
 
 
   getStores(): Observable<Store[]> {

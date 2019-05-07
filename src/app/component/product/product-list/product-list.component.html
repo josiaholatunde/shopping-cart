@@ -46,8 +46,8 @@
     </div>
     <div *ngIf="brands.length > 0">
       <div class="checkbox-brand" *ngFor="let b of brands">
-        <input type="checkbox"  id="brandName {{b.name}}" name="brandName{{b.name}}" (change)="filterProducts()" [(ngModel)]="b.isChecked">
-        <label for="brandName {{b.name}}" class="brandName">
+        <input type="checkbox"  id="brandName{{b.name}}" name="brandName{{b.name}}" (change)="filterProducts()" [(ngModel)]="b.isChecked">
+        <label for="brandName{{b.name}}" class="brandName">
           {{ b.name }}
         </label>
       </div>
@@ -57,6 +57,7 @@
     <div class="message" *ngIf="productList.length === 0">
         <h3>Oops! There are currently no products to display</h3>
     </div>
+    <ng4-loading-spinner [threshold]="2000"  [loadingText]="'Please wait...'" [zIndex]="9999"></ng4-loading-spinner>
     <div class="flex-card" *ngIf="productList">
       <div *ngFor="let product of productList">
         <app-product  [product]="product"></app-product>

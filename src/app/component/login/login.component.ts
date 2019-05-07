@@ -12,7 +12,7 @@ import { Router, NavigationEnd } from '@angular/router';
 export class LoginComponent implements OnInit {
 
   @ViewChild('loginForm') loginForm: NgForm;
-  userToLoginDto: any ={};
+  userToLoginDto: any = {};
   formMode: string;
   formName: string;
   constructor(private authService: AuthService, private alertifyService: AlertifyService, private router: Router) { }
@@ -28,7 +28,6 @@ export class LoginComponent implements OnInit {
         this.router.navigate(['products'], {queryParams: {categoryId: 1}});
       }, err => {
         this.alertifyService.error(err);
-        console.log(err);
       });
 
   }

@@ -12,6 +12,7 @@ count = 1;
   constructor() { }
 
   ngOnInit() {
+
   }
   slideImageRight() {
   this.count += 1;

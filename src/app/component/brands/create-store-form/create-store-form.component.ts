@@ -47,9 +47,8 @@ export class CreateStoreFormComponent implements OnInit {
         } else {
           this.formMode = FormMode.create;
         }
-      this.openModal(this.templateStore);
     });
-
+    this.openModal(this.templateStore);
   });
 }
 
@@ -63,6 +62,7 @@ export class CreateStoreFormComponent implements OnInit {
         this.modalRef.hide();
       });
     }
+    this.modalRef.hide();
   }
 
   initialiseCategoryForm(): any {
@@ -82,7 +82,7 @@ export class CreateStoreFormComponent implements OnInit {
         location
       };
       this.storeService.createStore(storeToCreateDto).subscribe(res => {
-        this.alertify.success('Successfully created brand');
+        this.alertify.success('Successfully created Store');
       }, err => this.alertify.error(err),
       () => {
         this.storeFormGroup.reset();

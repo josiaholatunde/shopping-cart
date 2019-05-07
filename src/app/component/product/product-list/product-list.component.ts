@@ -6,6 +6,7 @@ import { Product } from 'src/app/models/product';
 import { PageChangedEvent } from 'ngx-bootstrap/pagination';
 
 import { forkJoin } from 'rxjs';
+import { Ng4LoadingSpinnerService } from 'ng4-loading-spinner';
 import { BrandsService } from 'src/app/services/brand.service';
 import { Brand } from 'src/app/models/brand';
 import { AlertifyService } from 'src/app/services/alertify.service';
@@ -30,9 +31,11 @@ export class ProductListComponent implements OnInit {
   pageSize = 5;
   pageIndex = 1;
   constructor(private route: ActivatedRoute, private productService: ProductService, private brandsService: BrandsService,
-    private categoryService: CategoryService, private alertify: AlertifyService, private router: Router) {}
+    private categoryService: CategoryService, private alertify: AlertifyService, private router: Router,
+    private spinner: Ng4LoadingSpinnerService) {}
 
   ngOnInit() {
+    this.spinner.show();
     this.productService.productsObservable().subscribe(res => {
       this.productList = res;
     });
@@ -43,6 +46,7 @@ export class ProductListComponent implements OnInit {
         forkJoin(this.productService.getProducts(this.pageIndex, this.pageSize, this.categoryId),
                   this.brandsService.getBrands(this.categoryId),
                   this.categoryService.getCategory(this.categoryId)).subscribe(([res, res2, res3]) => {
+                    this.spinner.hide();
                     this.totalItems = parseInt(res.count, 10),
                     this.productList = res.products;
                     this.productType = res3.name;
@@ -123,6 +127,7 @@ export class ProductListComponent implements OnInit {
   }
   filterProducts() {
     let str = '';
+    this.spinner.show();
     this.brands.forEach(( br , i) => {
       if (br.isChecked) {
         str += br.brandId + ',';
@@ -131,18 +136,22 @@ export class ProductListComponent implements OnInit {
     str = str.slice(0, str.length - 1);
     if (this.productType === 'New Arrivals') {
       this.productService.getLatestProducts(this.pageIndex, this.pageSize, this.categoryId, str, null).subscribe(res => {
+        this.spinner.hide();
         this.productList = res.products;
         this.totalItems = parseInt(res.count, 10);
       });
     }  else if (this.productType === 'Top Picks') {
       this.productService.getLatestProducts(this.pageIndex, this.pageSize, this.categoryId, str, null).subscribe(res => {
+        this.spinner.hide();
         this.productList = res.products;
         this.totalItems = parseInt(res.count, 10);
       });
     } else {
       this.productService.getProducts(this.pageIndex, this.pageSize, this.categoryId, str, null).subscribe(res => {
+        this.spinner.hide();
         this.productList = res.products;
         this.totalItems = parseInt(res.count, 10);
+        console.log('PPP', this.productList);
       });
     }
   }

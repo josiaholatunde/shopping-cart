@@ -52,7 +52,7 @@ export class ProductListComponent implements OnInit {
                     this.productType = res3.name;
                     this.brands = res2;
                     this.brandsReference = this.brands;
-                    this.productService.updateProducts([...this.productList]);
+                   this.productService.updateProducts([...this.productList]);
         });
       }
 
@@ -151,7 +151,6 @@ export class ProductListComponent implements OnInit {
         this.spinner.hide();
         this.productList = res.products;
         this.totalItems = parseInt(res.count, 10);
-        console.log('PPP', this.productList);
       });
     }
   }

@@ -23,8 +23,10 @@ export class AuthService {
   }
   isUserAdmin() {
     const user = JSON.parse(localStorage.getItem('user'));
-    if (user.userRole === UserRole.Admin) {
-      return true;
+    if (user) {
+      if (user.userRole === UserRole.Admin) {
+        return true;
+      }
     }
     return false;
   }

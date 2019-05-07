@@ -22,11 +22,13 @@ export class ProductListComponent implements OnInit {
   productList: Product[];
   productType: string;
   isActive = false;
-  brands: Brand[];
+  brands = [];
   name: string;
-  searchParams: any = {};
+  searchParams: any = {
+    brandName: ''
+  };
   categoryId: any;
-  brandsReference: Brand[];
+  brandsReference: Brand[] = [];
   totalItems = 0;
   pageSize = 5;
   pageIndex = 1;

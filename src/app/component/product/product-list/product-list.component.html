@@ -42,7 +42,7 @@
       <div class="heading">Brand</div>
     </div>
     <div class="search-brand">
-      <input type="search" name="brand" placeholder="Search Brand" [(ngModel)]="searchParams.brandName" (keyup)="filterBrand()" class="brand">
+      <input type="search" name="brand" required placeholder="Search Brand" [(ngModel)]="searchParams.brandName" (keyup)="filterBrand()" class="brand">
     </div>
     <div *ngIf="brands.length > 0">
       <div class="checkbox-brand" *ngFor="let b of brands">

@@ -1,53 +1,68 @@
-# FashionStudio
-A shopping/ E-Commerce App built with angular and dotnet core 2.0 for carrying out shopping transactions 
-and Role based authentication for carrying out responsibilities.
+## Shop.ng
+A shopping/ E-Commerce App built with angular(Client side) and dotnet core 2.0(Web Api) for carrying out shopping transactions 
+and Role based authentication for carrying out responsibilities.<br>
+App is hosted on https://shopng.azurewebsites.net <br>
 
-EndPoints
-Authentication/User Controller
-The app uses Jwt Token authentication for logged in users and so only authorized users can access allowed routes
-/api/auth/login - For Logging in users and admin
-/api/auth/register - For registering users
-/api/users/:id - To retrieve a single user
+EndPoints<br/>
+Authentication/User Controller <br/>
+The app uses Jwt Token authentication for logged in users and so only authorized users can access allowed routes<br>
+<pre>
+/api/auth/login - For Logging in users and admin <br>
+/api/auth/register - For registering users <br>
+/api/users/:id - To retrieve a single user<br><br>
+</pre>
 
-Categories
-GET /api/categories - For retrieving all categories when the app loads with page info. The app chooses six selected categories to be displayed on the navbar but an Admin can configure the top categories to be displayed on the navbar
+Categories <br>
+<pre>
+GET /api/categories - For retrieving all categories when the app loads with page info. The app chooses six selected categories <br>
+to be displayed on the navbar but an Admin can configure the top categories to be displayed on the navbar<br>
 GET /api/categories/:categoryId/subCategories - For retrieving all the subcategories for a particular Category Id 
-when the app loads
-GET /api/categories/:id - To get a single category 
-POST /api/categories - To create categories, only accessible to Admin Roles 
-POST /api/categories/sub - To create subcategories, only accessible to Admin Roles 
-PUT /api/categories/:id - To edit a single category, only accessible to Admin Roles 
-DELETE /api/categories/:id - To delete a single category, only accessible to Admin Roles
+when the app loads<br>
+GET /api/categories/:id - To get a single category <br>
+POST /api/categories - To create categories, only accessible to Admin Roles <br>
+POST /api/categories/sub - To create subcategories, only accessible to Admin Roles <br>
+PUT /api/categories/:id - To edit a single category, only accessible to Admin Roles <br>
+DELETE /api/categories/:id - To delete a single category, only accessible to Admin Roles<br><br>
 
-Brands
-GET /api/brands?categoryId={categoryId} - For retrieving all brands when the app loads for a particular category
-GET /api/brands/all - For retrieving all brands
-GET /api/brands/:id - To get a single brand 
-POST /api/brands - To create a brand, only accessible to Admin Roles 
-PUT /api/brands/:id - To edit a single brand, only accessible to Admin Roles 
-DELETE /api/brands/:id - To delete a single brand, only accessible to Admin Roles
+</pre>
 
-Merchants
-GET /api/merchants - For retrieving all merchants
-GET /api/merchants/:id - To get a single merchant 
-POST /api/merchants - To create a merchant, only accessible to Admin Roles 
-PUT /api/merchants/:id - To edit a single merchant, only accessible to Admin Roles 
-DELETE /api/merchants/:id - To delete a single merchant, only accessible to Admin Roles
+Brands<br>
+<pre>
+GET /api/brands?categoryId={categoryId} - For retrieving all brands when the app loads for a particular category <br>
+GET /api/brands/all - For retrieving all brands <br>
+GET /api/brands/:id - To get a single brand <br>
+POST /api/brands - To create a brand, only accessible to Admin Roles <br>
+PUT /api/brands/:id - To edit a single brand, only accessible to Admin Roles <br>
+DELETE /api/brands/:id - To delete a single brand, only accessible to Admin Roles <br><br>
+</pre>
 
-Stores
-GET /api/stores - For retrieving all stores
-GET /api/stores/:id - To get a single store 
-POST /api/stores - To create a store, only accessible to Admin Roles 
-PUT /api/stores/:id - To edit a single store, only accessible to Admin Roles 
-DELETE /api/stores/:id - To delete a single store, only accessible to Admin Roles
+Merchants<br>
+<pre>
+GET /api/merchants - For retrieving all merchants <br>
+GET /api/merchants/:id - To get a single merchant  <br>
+POST /api/merchants - To create a merchant, only accessible to Admin Roles <br>
+PUT /api/merchants/:id - To edit a single merchant, only accessible to Admin Roles <br>
+DELETE /api/merchants/:id - To delete a single merchant, only accessible to Admin Roles <br><br>
+</pre>
 
-Products
-GET /api/products - For retrieving all products
-GET /api/products/:code - To get a single product 
+Stores<br>
+<pre>
+GET /api/stores - For retrieving all stores <br>
+GET /api/stores/:id - To get a single store  <br>
+POST /api/stores - To create a store, only accessible to Admin Roles <br>
+PUT /api/stores/:id - To edit a single store, only accessible to Admin Roles <br>
+DELETE /api/stores/:id - To delete a single store, only accessible to Admin Roles <br>
+</pre>
+
+Products<br>
+<pre>
+GET /api/products - For retrieving all products <br>
+GET /api/products/:code - To get a single product <br>
 POST /api/products - To create a product, includes features for products, and product image 
 only accessible to Admin Roles 
-PUT /api/products/:code - To edit a single product, only accessible to Admin Roles 
-DELETE /api/products/:code - To delete a single product, only accessible to Admin Roles
+PUT /api/products/:code - To edit a single product, only accessible to Admin Roles <br>
+DELETE /api/products/:code - To delete a single product, only accessible to Admin Roles<br><br>
+</pre>
 
 
 The App implements Paging for the products and filters/sorts products based on various sort parameters e.g.
